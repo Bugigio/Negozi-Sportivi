@@ -1,2 +1,1 @@
 # Negozi-Sportivi
-# Ciao
