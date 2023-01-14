@@ -12,7 +12,7 @@
             echo "Ciao";
         ?>
         <script>
-            console.log("ciao mascio");
+            console.log("ciao");
         </script>
     </body>
 </html>
