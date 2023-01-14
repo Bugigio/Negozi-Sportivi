@@ -8,8 +8,11 @@
     </head>
     <body>
         <?php
-            echo "Hello World!";
+            echo "Negozi sportivi!";
             echo "Ciao";
         ?>
+        <script>
+            console.log("ciao mascio");
+        </script>
     </body>
 </html>
