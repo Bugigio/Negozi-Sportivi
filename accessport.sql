@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 18, 2023 alle 12:56
+-- Creato il: Apr 22, 2023 alle 12:42
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `accessport`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `acquistare`
+--
+
+CREATE TABLE `acquistare` (
+  `cod_acquisto` int(11) NOT NULL,
+  `id_articolo` int(11) NOT NULL,
+  `email_utente` varchar(100) NOT NULL,
+  `data_acquisto` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,13 +70,14 @@ CREATE TABLE `bilancio` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `esaudire`
+-- Struttura della tabella `dipendenti`
 --
 
-CREATE TABLE `esaudire` (
-  `cod_esaudimento` int(11) NOT NULL,
-  `cod_ordine` int(11) NOT NULL,
-  `nome_fornitore` varchar(30) NOT NULL
+CREATE TABLE `dipendenti` (
+  `nome` varchar(30) NOT NULL,
+  `cognome` varchar(15) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -114,7 +128,25 @@ CREATE TABLE `ordini` (
   `data_ordine` date NOT NULL,
   `tipo_articolo` varchar(50) NOT NULL,
   `cod_ordine` int(11) NOT NULL,
-  `negozio_ordinante` varchar(30) NOT NULL
+  `negozio_ordinante` varchar(30) NOT NULL,
+  `nome_fornitore` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utenti`
+--
+
+CREATE TABLE `utenti` (
+  `email` varchar(100) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `cognome` varchar(15) NOT NULL,
+  `password` varchar(16) NOT NULL,
+  `città` varchar(100) NOT NULL,
+  `via` varchar(50) NOT NULL,
+  `numero_civico` int(3) NOT NULL,
+  `provincia` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -122,10 +154,20 @@ CREATE TABLE `ordini` (
 --
 
 --
+-- Indici per le tabelle `acquistare`
+--
+ALTER TABLE `acquistare`
+  ADD PRIMARY KEY (`cod_acquisto`),
+  ADD KEY `utente` (`email_utente`),
+  ADD KEY `articolo` (`id_articolo`);
+
+--
 -- Indici per le tabelle `articolo`
 --
 ALTER TABLE `articolo`
-  ADD PRIMARY KEY (`ID_articolo`);
+  ADD PRIMARY KEY (`ID_articolo`),
+  ADD KEY `magazzino` (`nome_magazzino`),
+  ADD KEY `offerta` (`cod_offerta`);
 
 --
 -- Indici per le tabelle `bilancio`
@@ -134,12 +176,10 @@ ALTER TABLE `bilancio`
   ADD PRIMARY KEY (`cod_bilancio`);
 
 --
--- Indici per le tabelle `esaudire`
+-- Indici per le tabelle `dipendenti`
 --
-ALTER TABLE `esaudire`
-  ADD PRIMARY KEY (`cod_esaudimento`),
-  ADD KEY `fornitore` (`nome_fornitore`),
-  ADD KEY `ordine` (`cod_ordine`);
+ALTER TABLE `dipendenti`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indici per le tabelle `fornitori`
@@ -164,11 +204,25 @@ ALTER TABLE `offerte`
 -- Indici per le tabelle `ordini`
 --
 ALTER TABLE `ordini`
-  ADD PRIMARY KEY (`cod_ordine`);
+  ADD PRIMARY KEY (`cod_ordine`),
+  ADD KEY `nome_fornitore` (`nome_fornitore`),
+  ADD KEY `nome_magazzino` (`negozio_ordinante`);
+
+--
+-- Indici per le tabelle `utenti`
+--
+ALTER TABLE `utenti`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+
+--
+-- AUTO_INCREMENT per la tabella `acquistare`
+--
+ALTER TABLE `acquistare`
+  MODIFY `cod_acquisto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `articolo`
@@ -199,17 +253,31 @@ ALTER TABLE `ordini`
 --
 
 --
--- Limiti per la tabella `esaudire`
+-- Limiti per la tabella `acquistare`
 --
-ALTER TABLE `esaudire`
-  ADD CONSTRAINT `fornitore` FOREIGN KEY (`nome_fornitore`) REFERENCES `fornitori` (`nome`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `ordine` FOREIGN KEY (`cod_ordine`) REFERENCES `ordini` (`cod_ordine`) ON UPDATE CASCADE;
+ALTER TABLE `acquistare`
+  ADD CONSTRAINT `articolo` FOREIGN KEY (`id_articolo`) REFERENCES `articolo` (`ID_articolo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `utente` FOREIGN KEY (`email_utente`) REFERENCES `utenti` (`email`) ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `articolo`
+--
+ALTER TABLE `articolo`
+  ADD CONSTRAINT `magazzino` FOREIGN KEY (`nome_magazzino`) REFERENCES `magazzino` (`nome`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `offerta` FOREIGN KEY (`cod_offerta`) REFERENCES `offerte` (`ID_offerta`) ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `magazzino`
 --
 ALTER TABLE `magazzino`
   ADD CONSTRAINT `bilancio` FOREIGN KEY (`cod_bilancio`) REFERENCES `bilancio` (`cod_bilancio`) ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `ordini`
+--
+ALTER TABLE `ordini`
+  ADD CONSTRAINT `nome_fornitore` FOREIGN KEY (`nome_fornitore`) REFERENCES `fornitori` (`nome`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `nome_magazzino` FOREIGN KEY (`negozio_ordinante`) REFERENCES `magazzino` (`nome`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
