@@ -21,8 +21,14 @@
         ?>
         <form name=registrati action=autenticazione.php method=post>
             <h1>Registrazione</h1>
-            <input type=text name=user placeholder="Nome utente" required/>
-            <input type=password name=password placeholder="Password" required/>
+            <input type=text name=nome placeholder="Nome" required/>
+            <input type=text name=cognome placeholder="Cognome" required/>
+            <input type=text name=password placeholder="Password" required/>
+            <input type=email name=email placeholder="Email" required/>
+            <input type=text name=città placeholder="Città" required/>
+            <input type=text name=via placeholder="Via" required/>
+            <input type=number name=civico placeholder="Civico" required/>
+            <input type=text name=provincia placeholder="Provincia" required/>
             <input type=submit name=registrati value=Registrati />
         </form>
         <div class=registrati>Hai già l'account? <a href=login.php>Loggati</a></div>
