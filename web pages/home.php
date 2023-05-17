@@ -28,5 +28,8 @@
 			</div>
 		</header>
 		<h1>Benvenuto</h1>
+		<form action="home.php" method="post">
+			
+		</form>
 	</body>
 </html>
