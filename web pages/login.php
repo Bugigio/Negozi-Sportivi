@@ -39,7 +39,7 @@
         ?>
         <form name=login action=autenticazione.php method=post>
             <h1>Login</h1>
-            <input type=text name=user placeholder="Nome utente" required/>
+            <input type=email name=email placeholder="Email" required/>
             <input type=password name=password placeholder="Password" required/>
             <input type=submit name=login value=Login />
         </form>
