@@ -1,0 +1,91 @@
+/* Stile globale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  /* Stile del titolo */
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  /* Stile del form di login */
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.5s ease 0s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Stile del link per la registrazione */
+  .registrati {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .registrati a {
+    color: #4caf50;
+    text-decoration: none;
+  }
+  
+  .registrati a:hover {
+    text-decoration: underline;
+  }
+
+  /* stile del link per cambio password */
+  .err a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .err a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Stile del messaggio di errore */
+  .err {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+  }

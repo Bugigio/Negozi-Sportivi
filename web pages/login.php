@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Login con i file</title>
-        <link rel=stylesheet href="../Stili/styleLR.css"></style>
+        <link rel=stylesheet href="../css/styleLR.css"></style>
     </head>
     <body>
         <?php 
