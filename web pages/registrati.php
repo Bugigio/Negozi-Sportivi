@@ -19,7 +19,7 @@
                 echo '</div>';
             }
         ?>
-        <form name=registrati action=registrazione.php method=post>
+        <form name=registrati action=autenticazione.php method=post>
             <h1>Registrazione</h1>
             <input type=text name=user placeholder="Nome utente" required/>
             <input type=password name=password placeholder="Password" required/>
