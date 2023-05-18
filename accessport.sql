@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 18, 2023 alle 16:42
+-- Creato il: Mag 18, 2023 alle 18:10
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -40,7 +40,7 @@ CREATE TABLE `acquistare` (
 --
 
 CREATE TABLE `articolo` (
-  `quantità` int(3) NOT NULL,
+  `quantita` int(3) NOT NULL,
   `tipo_articolo` varchar(25) NOT NULL,
   `nome_articolo` varchar(45) NOT NULL,
   `prezzo_acquisto` double(4,2) NOT NULL,
@@ -63,7 +63,8 @@ CREATE TABLE `bilancio` (
   `profitti` double DEFAULT NULL,
   `rincaro_20` tinyint(1) NOT NULL,
   `cod_bilancio` int(11) NOT NULL,
-  `reddito` double DEFAULT NULL
+  `reddito` double DEFAULT NULL,
+  `nome_magazzino` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -89,6 +90,13 @@ CREATE TABLE `fornitori` (
   `nome` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `fornitori`
+--
+
+INSERT INTO `fornitori` (`nome`) VALUES
+('ciccio');
+
 -- --------------------------------------------------------
 
 --
@@ -97,8 +105,7 @@ CREATE TABLE `fornitori` (
 
 CREATE TABLE `magazzino` (
   `nome` varchar(30) NOT NULL,
-  `capacita` int(3) NOT NULL DEFAULT 500,
-  `cod_bilancio` int(11) NOT NULL
+  `capacita` int(3) NOT NULL DEFAULT 500
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -206,8 +213,7 @@ ALTER TABLE `fornitori`
 -- Indici per le tabelle `magazzino`
 --
 ALTER TABLE `magazzino`
-  ADD PRIMARY KEY (`nome`),
-  ADD KEY `bilancio` (`cod_bilancio`);
+  ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `newsletter`
@@ -249,7 +255,7 @@ ALTER TABLE `articolo`
 -- AUTO_INCREMENT per la tabella `bilancio`
 --
 ALTER TABLE `bilancio`
-  MODIFY `cod_bilancio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_bilancio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `offerte`
@@ -280,12 +286,6 @@ ALTER TABLE `acquistare`
 ALTER TABLE `articolo`
   ADD CONSTRAINT `magazzino` FOREIGN KEY (`nome_magazzino`) REFERENCES `magazzino` (`nome`) ON UPDATE CASCADE,
   ADD CONSTRAINT `offerta` FOREIGN KEY (`cod_offerta`) REFERENCES `offerte` (`ID_offerta`) ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `magazzino`
---
-ALTER TABLE `magazzino`
-  ADD CONSTRAINT `bilancio` FOREIGN KEY (`cod_bilancio`) REFERENCES `bilancio` (`cod_bilancio`) ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `ordini`
