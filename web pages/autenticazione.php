@@ -5,6 +5,7 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
+		//controllo tabella utenti
 		$query = "SELECT utenti.`email`, utenti.`password` FROM utenti WHERE utenti.`email` = '$email';";
 		$dati = $db->query($query);
 
@@ -12,14 +13,33 @@
 			if($r["email"] == $email) 
 				if($r["password"] == $password) {
 					// cookie
-					echo "successo";
-					// header("location: account.php");
-					// die();
+					setcookie("utente", $r, time() + (86400 * 30), "/");
+					header("location: account.php");
+					die();
 				} else {
 					header("location: login.php?err=5");
 					die();
 				}
 		}
+
+		// controllo tabella dipendenti
+		$query = "SELECT dipendenti.`email`, dipendenti.`password` FROM dipendenti WHERE dipendenti.`email` = '$email';";
+		$dati = $db->query($query);
+
+		foreach($dati as $r) {
+			if($r["email"] == $email) 
+				if($r["password"] == $password) {
+					// cookie
+					setcookie("dipendente", $r, time() + (86400 * 30), "/cookies");
+					header("location: amministrazione.php");
+					die();
+				} else {
+					header("location: login.php?err=5");
+					die();
+				}
+		}
+
+		$db->close();
 		header("location: login.php?err=2");
 		die();
 		
@@ -40,6 +60,7 @@
 				('$nome', '$cognome', '$password','$email', '$citta', '$via', '$civico', '$provincia');";
 
 		$db->query($query);
+		$db->close();
 		header("location: account.php");
 		die();
 	} else {
