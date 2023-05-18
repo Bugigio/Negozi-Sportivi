@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Login con i file</title>
-        <link rel=stylesheet href="../css/styleLR.css"></style>
+        <link rel=stylesheet href="../css/styleLR.css">
     </head>
     <body>
         <?php 
@@ -14,17 +14,8 @@
                     case 2:
                         echo "Utente inesistente, vuoi registrarti? <a href=registrati.php>Registrati</a>";
                         break;
-                    case 3:
-                        echo "Utente creato";
-                        break;  
-                    case 4:
-                        echo "File utenti inesistente";
-                        break;
                     case 5:
                         echo "Password errata";
-                        break;
-                    case 6:
-                        echo 'Password errata, <a href="cambiaPassword.php?user=' . $_REQUEST['user'] . '">Cambia password</a>';
                         break;
                     default:
                         echo "Errore generico";
@@ -37,11 +28,11 @@
                 echo "</div>";
             }
         ?>
-        <form name=login action=autenticazione.php method=post>
+        <form action=autenticazione.php method=post>
             <h1>Login</h1>
             <input type=email name=email placeholder="Email" required/>
             <input type=password name=password placeholder="Password" required/>
-            <input type=submit name=login value=Login />
+            <input type=submit name=accedi value=Login />
         </form>
         <div class=registrati>Non sei registrato? <a href=registrati.php>Registrati</a></div>
     </body>

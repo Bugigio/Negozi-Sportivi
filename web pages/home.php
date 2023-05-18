@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel=stylesheet href="../css/styleLR.css"></style>
+		<link rel="stylesheet" href="../css/home.css">
 		<title>Home</title>
 		<style>
 			header {
@@ -28,15 +28,14 @@
 				<a href="signIn.php"><button>Registrati</button></a>
 			</div>
 		</header>
-		<h1>Benvenuto</h1>
 		<form action="home.php" method="post">
 			<h1>Registrati alla nostra newsletter!</h1>
-			<input type=email name=email placeholder="Email" style="width: 170px;" required/><br/>
-			<input type=text name=provincia placeholder="Provincia" style="width: 170px;" required/><br/>
-			<input type=text name=città placeholder="Città" style="width: 170px;" required/><br/>
-			<input type=text name=via placeholder="Via" style="width: 170px;" required/><br/>
-			<input type=number name=civico placeholder="Civico" min=1 max=999 style="width: 170px;" required/><br/>
-			<input type=submit name=registrati value=Registrati />
+			<input type=email name=email placeholder="Email" required/>
+			<input type=text name=provincia placeholder="Provincia" required/>
+			<input type=text name=città placeholder="Città" required/>
+			<input type=text name=via placeholder="Via" required/>
+			<input type=number name=civico placeholder="Civico" min=1 max=999 required/>
+			<input type=submit name=registrati value=Iscriviti />
 		</form>
 	</body>
 </html>

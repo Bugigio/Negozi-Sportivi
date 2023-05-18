@@ -19,13 +19,13 @@
                 echo '</div>';
             }
         ?>
-        <form name=registrati action=autenticazione.php method=post>
+        <form action=autenticazione.php method=post>
             <h1>Registrazione</h1>
             <input type=text name=nome placeholder="Nome" maxlength="30" required/>
             <input type=text name=cognome placeholder="Cognome" maxlength=15 required/>
             <input type=text name=password placeholder="Password" maxlength=16 required/>
             <input type=email name=email placeholder="Email" maxlength="100" required/>
-            <input type=text name=città placeholder="Città" maxlength=100 required/>
+            <input type=text name=citta placeholder="Città" maxlength=100 required/>
             <input type=text name=via placeholder="Via" maxlength=50 required/>
             <input type=number name=civico placeholder="Civico" maxlength=3 max="999" min=1 required/>
             <input type=text name=provincia placeholder="Provincia" maxlength="2" required/>
