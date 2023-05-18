@@ -16,7 +16,7 @@
 	<body>
 		<header>
 			<div>
-				<a href="shop1.php"><button>shop 1</button></a>
+				<a href="basketballPassion.php"><button>Basketball Passion</button></a>
 			</div>
 			<div><a href="shop2.php"><button>shop 2</button></a></div>
 			<div><a href="shop3.php"><button>shop 3</button></a></div>
