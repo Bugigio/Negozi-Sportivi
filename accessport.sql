@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 22, 2023 alle 12:42
+-- Creato il: Mag 18, 2023 alle 16:42
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -28,10 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acquistare` (
-  `cod_acquisto` int(11) NOT NULL,
   `id_articolo` int(11) NOT NULL,
   `email_utente` varchar(100) NOT NULL,
-  `data_acquisto` date NOT NULL
+  `data/ora_acquisto` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -76,7 +75,7 @@ CREATE TABLE `bilancio` (
 CREATE TABLE `dipendenti` (
   `nome` varchar(30) NOT NULL,
   `cognome` varchar(15) NOT NULL,
-  `username` varchar(16) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -100,6 +99,22 @@ CREATE TABLE `magazzino` (
   `nome` varchar(30) NOT NULL,
   `capacita` int(3) NOT NULL DEFAULT 500,
   `cod_bilancio` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `email` varchar(100) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `cognome` varchar(15) NOT NULL,
+  `citta` varchar(100) NOT NULL,
+  `via` varchar(50) NOT NULL,
+  `numero_civico` int(2) NOT NULL,
+  `provincia` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -157,7 +172,7 @@ CREATE TABLE `utenti` (
 -- Indici per le tabelle `acquistare`
 --
 ALTER TABLE `acquistare`
-  ADD PRIMARY KEY (`cod_acquisto`),
+  ADD PRIMARY KEY (`id_articolo`,`email_utente`,`data/ora_acquisto`),
   ADD KEY `utente` (`email_utente`),
   ADD KEY `articolo` (`id_articolo`);
 
@@ -179,7 +194,7 @@ ALTER TABLE `bilancio`
 -- Indici per le tabelle `dipendenti`
 --
 ALTER TABLE `dipendenti`
-  ADD PRIMARY KEY (`username`);
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indici per le tabelle `fornitori`
@@ -193,6 +208,12 @@ ALTER TABLE `fornitori`
 ALTER TABLE `magazzino`
   ADD PRIMARY KEY (`nome`),
   ADD KEY `bilancio` (`cod_bilancio`);
+
+--
+-- Indici per le tabelle `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indici per le tabelle `offerte`
@@ -217,12 +238,6 @@ ALTER TABLE `utenti`
 --
 -- AUTO_INCREMENT per le tabelle scaricate
 --
-
---
--- AUTO_INCREMENT per la tabella `acquistare`
---
-ALTER TABLE `acquistare`
-  MODIFY `cod_acquisto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `articolo`
