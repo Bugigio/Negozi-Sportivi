@@ -18,7 +18,7 @@
 					case 1:
 						setcookie("utente", "", time()-86400, "/");
 						break;
-					case 1:
+					case 0:
 						setcookie("dipendente", "", time()-86400, "/");
 						break;
 				}
@@ -32,12 +32,8 @@
 			<div><a href="shop/racingSpirit.php"><button>Racing Spirit</button></a></div>
 			<div><a href="shop/soccerEvolution.php"><button>Soccer Evolution</button></a></div>
 			<div><a href="shop/tennisClash.php"><button>Tennis Clash</button></a></div>
-			<div>
-				<a href="login.php"><button>Login</button></a>
-			</div>
-			<div>
-				<a href="registrati.php"><button>Registrati</button></a>
-			</div>
+			<div><a href="login.php"><button>Login</button></a></div>
+			<div><a href="registrati.php"><button>Registrati</button></a></div>
 		</header>
 		<form action="home.php" method="post">
 			<h1>Registrati alla nostra newsletter!</h1>

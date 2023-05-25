@@ -44,7 +44,9 @@ div {
 	height: fit-content;
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
+
 
 .articolo {
 	max-width: 20%;

@@ -10,10 +10,11 @@
 	<body>
 		<header>
 			<div><a href="shop/basketballPassion.php"><button>Basketball Passion</button></a></div>
-			<div><a href="shop2.php"><button>shop 2</button></a></div>
-			<div><a href="shop3.php"><button>shop 3</button></a></div>
-			<div><a href="shop4.php"><button>shop 4</button></a></div>
-			<div><a href="../account.php"><button>Login</button></a></div>
+			<div><a href="shop/racingSpirit.php"><button>Racing Spirit</button></a></div>
+			<div><a href="shop/soccerEvolution.php"><button>Soccer Evolution</button></a></div>
+			<div><a href="shop/tennisClash.php"><button>Tennis Clash</button></a></div>
+			<div><a href="../account.php"><button>ACCOUNT</button></a></div>
+			<div><a href="../home.php?logout=1"><button>LOGOUT</button></a></div>
 		</header>
 		<div class="container">
 			<?php 
