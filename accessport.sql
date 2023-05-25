@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 25, 2023 alle 09:13
+-- Creato il: Mag 25, 2023 alle 10:31
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -42,6 +42,7 @@ CREATE TABLE `acquistare` (
 CREATE TABLE `articolo` (
   `quantita` int(3) NOT NULL,
   `tipo_articolo` varchar(25) NOT NULL,
+  `percorso_immagine` varchar(200) NOT NULL,
   `nome_articolo` varchar(45) NOT NULL,
   `prezzo_acquisto` double(4,2) NOT NULL,
   `prezzo_vendita` double(4,2) NOT NULL,
@@ -50,6 +51,17 @@ CREATE TABLE `articolo` (
   `nome_magazzino` varchar(30) NOT NULL,
   `cod_offerta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `articolo`
+--
+
+INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `percorso_immagine`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `ID_articolo`, `nome_magazzino`, `cod_offerta`) VALUES
+(32, 'pallone', 'img.jpg', 'carlo', 15.00, 20.00, NULL, 2, 'Pallavolo Everywhere', NULL),
+(10, 'maglia', 'maglia.jpg', 'Maglia Calcio', 50.00, 80.00, 5, 3, 'Pallavolo Everywhere', NULL),
+(5, 'racchetta', 'racchetta.jpg', 'Racchetta Tennis', 99.99, 99.99, NULL, 4, 'Pallavolo Everywhere', 2),
+(15, 'pallone', 'pallone.jpg', 'Pallone Basket', 25.00, 35.00, 3, 5, 'Pallavolo Everywhere', 3),
+(8, 'scarpe', 'scarpe.jpg', 'Scarpe Running', 99.99, 99.99, NULL, 6, 'Pallavolo Everywhere', 1);
 
 -- --------------------------------------------------------
 
@@ -107,6 +119,13 @@ CREATE TABLE `magazzino` (
   `nome` varchar(30) NOT NULL,
   `capacita` int(3) NOT NULL DEFAULT 500
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `magazzino`
+--
+
+INSERT INTO `magazzino` (`nome`, `capacita`) VALUES
+('Pallavolo Everywhere', 500);
 
 -- --------------------------------------------------------
 
@@ -170,6 +189,13 @@ CREATE TABLE `utenti` (
   `numero_civico` int(3) NOT NULL,
   `provincia` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `utenti`
+--
+
+INSERT INTO `utenti` (`email`, `nome`, `cognome`, `password`, `citta`, `via`, `numero_civico`, `provincia`) VALUES
+('v@v', 'v', 'v', 'v', 'v', 'v', 1, 'vv');
 
 --
 -- Indici per le tabelle scaricate
@@ -249,7 +275,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `bilancio`
