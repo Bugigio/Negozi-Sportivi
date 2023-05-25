@@ -12,7 +12,7 @@
         <header>
 			<div>
 				<a href="basketballPassion.php"><button>Basketball Passion</button></a>
-			</div>
+			</div> 
 			<div><a href="shop2.php"><button>shop 2</button></a></div>
 			<div><a href="shop3.php"><button>shop 3</button></a></div>
 			<div><a href="shop4.php"><button>shop 4</button></a></div>
