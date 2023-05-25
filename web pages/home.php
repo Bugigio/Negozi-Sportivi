@@ -27,12 +27,11 @@
 	</head>
 	<body>
 		<header>
-			<div>
-				<a href="shop/basketballPassion.php"><button>Basketball Passion</button></a>
-			</div>
-			<div><a href="shop2.php"><button>shop 2</button></a></div>
-			<div><a href="shop3.php"><button>shop 3</button></a></div>
-			<div><a href="shop4.php"><button>shop 4</button></a></div>
+			<div><a href="shop/basketballPassion.php"><button>Basketball Passion</button></a></div>
+			<div><a href="shop/pallavoloEverywhere.php"><button>Pallavolo Everywhere</button></a></div>
+			<div><a href="shop/racingSpirit.php"><button>Racing Spirit</button></a></div>
+			<div><a href="shop/soccerEvolution.php"><button>Soccer Evolution</button></a></div>
+			<div><a href="shop/tennisClash.php"><button>Tennis Clash</button></a></div>
 			<div>
 				<a href="login.php"><button>Login</button></a>
 			</div>
@@ -49,5 +48,13 @@
 			<input type=number name=civico placeholder="Civico" min=1 max=999 required/>
 			<input type=submit name=registrati value=Iscriviti />
 		</form>
+
+
+
+		<!--FOOTER-->
+        <footer class="footer">
+            <p>© Copyright 2023 Gabriele Tommasi, Lorenzo Barattin, Alexandru Tanase & Andrea Cigana</p>
+            <p>Sede Legale Motta di Livenza - Presso l'Istituto Antonio Scarpa</p>
+	    </footer>
 	</body>
 </html>

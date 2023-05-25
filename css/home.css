@@ -63,3 +63,13 @@
   header div {
     
   }
+
+
+/* Footer */
+
+.footer{
+  background: rgb(194, 194, 194); 
+  padding:30px;
+  color:#fff; 
+  margin-top: 40px
+}
