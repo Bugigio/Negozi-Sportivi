@@ -4,15 +4,15 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Pallavolo Everywhere</title>
+		<title>PALLAVOLO EVERYWHERE</title>
 		<link rel="stylesheet" href="../../css/shop.css">
 	</head>
 	<body>
 		<header>
-			<div><a href="shop/basketballPassion.php"><button>BASKETBALL PASSION</button></a></div>
-			<div><a href="shop/racingSpirit.php"><button>RACING SPIRIT</button></a></div>
-			<div><a href="shop/soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
-			<div><a href="shop/tennisClash.php"><button>TENNIS CLASH</button></a></div>
+			<div><a href="basketballPassion.php"><button>BASKETBALL PASSION</button></a></div>
+			<div><a href="racingSpirit.php"><button>RACING SPIRIT</button></a></div>
+			<div><a href="soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
+			<div><a href="tennisClash.php"><button>TENNIS CLASH</button></a></div>
 			<div><a href="../account.php"><button>ACCOUNT</button></a></div>
 			<div><a href="../home.php?logout=1"><button>LOGOUT</button></a></div>
 		</header>
@@ -32,7 +32,6 @@
 					<?php
 				}
 			?>
-
 		</div>
 	</body>
 </html>
