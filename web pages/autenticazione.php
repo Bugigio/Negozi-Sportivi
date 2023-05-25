@@ -13,7 +13,7 @@
 			if($r["email"] == $email) 
 				if($r["password"] == $password) {
 					// cookie
-					setcookie("utente", $r, time() + (86400 * 30), "/");
+					setcookie("utente", $r["email"], time() + (86400 * 30), "/");
 					header("location: account.php");
 					die();
 				} else {
@@ -30,7 +30,7 @@
 			if($r["email"] == $email) 
 				if($r["password"] == $password) {
 					// cookie
-					setcookie("dipendente", $r, time() + (86400 * 30), "/cookies");
+					setcookie("dipendente", $r["email"], time() + (86400 * 30), "/");
 					header("location: amministrazione.php");
 					die();
 				} else {
@@ -61,7 +61,7 @@
 
 		$db->query($query);
 		$db->close();
-		header("location: account.php");
+		header("location: login.php");
 		die();
 	} else {
 		header("location: login.php?err=1");

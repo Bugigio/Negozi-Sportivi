@@ -12,11 +12,23 @@
 				flex-direction: row;
 			}
 		</style>
+		<?php 
+			if(isset($_GET['logout'])) {
+				switch($_GET['logout']) {
+					case 1:
+						setcookie("utente", "", time()-86400, "/");
+						break;
+					case 1:
+						setcookie("dipendente", "", time()-86400, "/");
+						break;
+				}
+			}
+		?> 
 	</head>
 	<body>
 		<header>
 			<div>
-				<a href="basketballPassion.php"><button>Basketball Passion</button></a>
+				<a href="shop/basketballPassion.php"><button>Basketball Passion</button></a>
 			</div>
 			<div><a href="shop2.php"><button>shop 2</button></a></div>
 			<div><a href="shop3.php"><button>shop 3</button></a></div>
@@ -25,7 +37,7 @@
 				<a href="login.php"><button>Login</button></a>
 			</div>
 			<div>
-				<a href="signIn.php"><button>Registrati</button></a>
+				<a href="registrati.php"><button>Registrati</button></a>
 			</div>
 		</header>
 		<form action="home.php" method="post">

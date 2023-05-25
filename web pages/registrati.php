@@ -17,6 +17,9 @@
                         break;
                 }
                 echo '</div>';
+            } else if(isset($_COOKIE["utente"])) {
+                header("location: account.php");
+                die();
             }
         ?>
         <form action=autenticazione.php method=post>

@@ -22,11 +22,14 @@
                         break;
                 }
                 echo "</div>";
-            } elseif(isset($_REQUEST['passwChanged'])) {
-                echo "<div class=err>";
-                echo "Password cambiata";
-                echo "</div>";
+            } else if(isset($_COOKIE["utente"])) {
+                header("location: account.php");
+                die();
+            } else if(isset($_COOKIE["dipendente"])) {
+                header("location: amministrazione.php");
+                die();
             }
+
         ?>
         <form action=autenticazione.php method=post>
             <h1>Login</h1>

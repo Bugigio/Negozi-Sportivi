@@ -37,7 +37,7 @@
                         foreach($dati as $r) {
                             $i=0;
                             ?>
-                                <div><h3 class="titolo"><?php echo $r; ?></h3></div>
+                                <div><h3 class="titolo"><?php echo $r["nome_articolo"]; ?></h3></div>
                             <?php
                             $i++;
                         }
