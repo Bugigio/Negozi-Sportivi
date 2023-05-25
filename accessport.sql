@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 22, 2023 alle 12:42
+-- Creato il: Mag 25, 2023 alle 10:31
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -28,10 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acquistare` (
-  `cod_acquisto` int(11) NOT NULL,
   `id_articolo` int(11) NOT NULL,
   `email_utente` varchar(100) NOT NULL,
-  `data_acquisto` date NOT NULL
+  `data/ora_acquisto` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -41,8 +40,9 @@ CREATE TABLE `acquistare` (
 --
 
 CREATE TABLE `articolo` (
-  `quantità` int(3) NOT NULL,
+  `quantita` int(3) NOT NULL,
   `tipo_articolo` varchar(25) NOT NULL,
+  `percorso_immagine` varchar(200) NOT NULL,
   `nome_articolo` varchar(45) NOT NULL,
   `prezzo_acquisto` double(4,2) NOT NULL,
   `prezzo_vendita` double(4,2) NOT NULL,
@@ -51,6 +51,17 @@ CREATE TABLE `articolo` (
   `nome_magazzino` varchar(30) NOT NULL,
   `cod_offerta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `articolo`
+--
+
+INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `percorso_immagine`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `ID_articolo`, `nome_magazzino`, `cod_offerta`) VALUES
+(32, 'pallone', 'img.jpg', 'carlo', 15.00, 20.00, NULL, 2, 'Pallavolo Everywhere', NULL),
+(10, 'maglia', 'maglia.jpg', 'Maglia Calcio', 50.00, 80.00, 5, 3, 'Pallavolo Everywhere', NULL),
+(5, 'racchetta', 'racchetta.jpg', 'Racchetta Tennis', 99.99, 99.99, NULL, 4, 'Pallavolo Everywhere', 2),
+(15, 'pallone', 'pallone.jpg', 'Pallone Basket', 25.00, 35.00, 3, 5, 'Pallavolo Everywhere', 3),
+(8, 'scarpe', 'scarpe.jpg', 'Scarpe Running', 99.99, 99.99, NULL, 6, 'Pallavolo Everywhere', 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +75,8 @@ CREATE TABLE `bilancio` (
   `profitti` double DEFAULT NULL,
   `rincaro_20` tinyint(1) NOT NULL,
   `cod_bilancio` int(11) NOT NULL,
-  `reddito` double DEFAULT NULL
+  `reddito` double DEFAULT NULL,
+  `nome_magazzino` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -76,7 +88,7 @@ CREATE TABLE `bilancio` (
 CREATE TABLE `dipendenti` (
   `nome` varchar(30) NOT NULL,
   `cognome` varchar(15) NOT NULL,
-  `username` varchar(16) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -90,6 +102,13 @@ CREATE TABLE `fornitori` (
   `nome` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `fornitori`
+--
+
+INSERT INTO `fornitori` (`nome`) VALUES
+('ciccio');
+
 -- --------------------------------------------------------
 
 --
@@ -98,8 +117,30 @@ CREATE TABLE `fornitori` (
 
 CREATE TABLE `magazzino` (
   `nome` varchar(30) NOT NULL,
-  `capacita` int(3) NOT NULL DEFAULT 500,
-  `cod_bilancio` int(11) NOT NULL
+  `capacita` int(3) NOT NULL DEFAULT 500
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `magazzino`
+--
+
+INSERT INTO `magazzino` (`nome`, `capacita`) VALUES
+('Pallavolo Everywhere', 500);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `email` varchar(100) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `cognome` varchar(15) NOT NULL,
+  `citta` varchar(100) NOT NULL,
+  `via` varchar(50) NOT NULL,
+  `numero_civico` int(2) NOT NULL,
+  `provincia` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -143,11 +184,18 @@ CREATE TABLE `utenti` (
   `nome` varchar(30) NOT NULL,
   `cognome` varchar(15) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `città` varchar(100) NOT NULL,
+  `citta` varchar(100) NOT NULL,
   `via` varchar(50) NOT NULL,
   `numero_civico` int(3) NOT NULL,
   `provincia` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `utenti`
+--
+
+INSERT INTO `utenti` (`email`, `nome`, `cognome`, `password`, `citta`, `via`, `numero_civico`, `provincia`) VALUES
+('v@v', 'v', 'v', 'v', 'v', 'v', 1, 'vv');
 
 --
 -- Indici per le tabelle scaricate
@@ -157,7 +205,7 @@ CREATE TABLE `utenti` (
 -- Indici per le tabelle `acquistare`
 --
 ALTER TABLE `acquistare`
-  ADD PRIMARY KEY (`cod_acquisto`),
+  ADD PRIMARY KEY (`id_articolo`,`email_utente`,`data/ora_acquisto`),
   ADD KEY `utente` (`email_utente`),
   ADD KEY `articolo` (`id_articolo`);
 
@@ -179,7 +227,7 @@ ALTER TABLE `bilancio`
 -- Indici per le tabelle `dipendenti`
 --
 ALTER TABLE `dipendenti`
-  ADD PRIMARY KEY (`username`);
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indici per le tabelle `fornitori`
@@ -191,8 +239,13 @@ ALTER TABLE `fornitori`
 -- Indici per le tabelle `magazzino`
 --
 ALTER TABLE `magazzino`
-  ADD PRIMARY KEY (`nome`),
-  ADD KEY `bilancio` (`cod_bilancio`);
+  ADD PRIMARY KEY (`nome`);
+
+--
+-- Indici per le tabelle `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indici per le tabelle `offerte`
@@ -219,22 +272,16 @@ ALTER TABLE `utenti`
 --
 
 --
--- AUTO_INCREMENT per la tabella `acquistare`
---
-ALTER TABLE `acquistare`
-  MODIFY `cod_acquisto` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `bilancio`
 --
 ALTER TABLE `bilancio`
-  MODIFY `cod_bilancio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_bilancio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `offerte`
@@ -265,12 +312,6 @@ ALTER TABLE `acquistare`
 ALTER TABLE `articolo`
   ADD CONSTRAINT `magazzino` FOREIGN KEY (`nome_magazzino`) REFERENCES `magazzino` (`nome`) ON UPDATE CASCADE,
   ADD CONSTRAINT `offerta` FOREIGN KEY (`cod_offerta`) REFERENCES `offerte` (`ID_offerta`) ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `magazzino`
---
-ALTER TABLE `magazzino`
-  ADD CONSTRAINT `bilancio` FOREIGN KEY (`cod_bilancio`) REFERENCES `bilancio` (`cod_bilancio`) ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `ordini`

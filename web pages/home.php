@@ -13,24 +13,28 @@
 				flex-direction: row;
 			}
 		</style>
+		<?php 
+			if(isset($_GET['logout'])) {
+				switch($_GET['logout']) {
+					case 1:
+						setcookie("utente", "", time()-86400, "/");
+						break;
+					case 0:
+						setcookie("dipendente", "", time()-86400, "/");
+						break;
+				}
+			}
+		?> 
 	</head>
 	<body>
-		
-		<header class="header clearfix">
-			<a href="" class="header__icon-bar">
-				<span></span>
-				<span></span>
-				<span></span>
-			</a>
-			
-			<ul class="header__menu animate">
-				<li class="header__menu__item"><a href="shop1.php">SHOP1</a></li>
-				<li class="header__menu__item"><a href="shop2.php">SHOP2</a></li>
-				<li class="header__menu__item"><a href="shop3.php">SHOP3</a></li>
-				<li class="header__menu__item"><a href="shop4.php">SHOP4</a></li>
-				<li class="header__menu__item"><a href="login.php">LOGIN</a></li>
-				<li class="header__menu__item"><a href="signIn.php">REGISTRATI</a></li>
-			</ul>
+		<header>
+			<div><a href="shop/basketballPassion.php"><button>BASKETBALL PASSION</button></a></div>
+			<div><a href="shop/pallavoloEverywhere.php"><button>PALLAVOLO EVERYWHERE</button></a></div>
+			<div><a href="shop/racingSpirit.php"><button>RACING SPIRIT</button></a></div>
+			<div><a href="shop/soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
+			<div><a href="shop/tennisClash.php"><button>TENNIS CLASH</button></a></div>
+			<div><a href="login.php"><button>LOGIN</button></a></div>
+			<div><a href="registrati.php"><button>REGISTRATI</button></a></div>
 		</header>
 		
 		<!--
@@ -58,20 +62,12 @@
 			<input type=submit name=registrati value=Iscriviti/>
 		</form>
 
+
+
 		<!--FOOTER-->
         <footer class="footer">
-            <p>©Copyright 2023 Gabriele Tommasi, Lorenzo Barattin, Alexandru Tanase & Andrea Cigana</p><br/>
+            <p>© Copyright 2023 Gabriele Tommasi, Lorenzo Barattin, Alexandru Tanase & Andrea Cigana</p>
             <p>Sede Legale Motta di Livenza - Presso l'Istituto Antonio Scarpa</p>
 	    </footer>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$(".header__icon-bar").click(function(e){
-					$(".header__menu").toggleClass('is-open');
-					e.preventDefault();
-				});
-			});
-		</script>
 	</body>
 </html>
