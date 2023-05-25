@@ -16,97 +16,22 @@
 			<div><a href="../account.php"><button>Login</button></a></div>
 		</header>
 		<div class="container">
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			<div class="articolo">
-				<h3>Titolo</h3>
-				<img src="" alt="immagine articolo">
-				<p>descrizione</p>
-			</div>
-			
+			<?php 
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$query = "SELECT * FROM articolo WHERE nome_magazzino LIKE 'Pallavolo Everywhere';";
+				$articoli = $db->query($query);
+				foreach($articoli as $a) {
+					?>
+					<div class="articolo">
+						<h3><?php echo $a["nome_articolo"]; ?></h3>
+						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo">
+						<p><?php echo $a["tipo_articolo"]; ?></p>
+						<input type="button" value="<?php echo $a["ID_articolo"]; ?>">
+					</div>
+					<?php
+				}
+			?>
+
 		</div>
 	</body>
 </html>
