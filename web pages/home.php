@@ -12,14 +12,26 @@
 				flex-direction: row;
 			}
 		</style>
+		<?php 
+			if(isset($_GET['logout'])) {
+				switch($_GET['logout']) {
+					case 1:
+						setcookie("utente", "", time()-86400, "/");
+						break;
+					case 1:
+						setcookie("dipendente", "", time()-86400, "/");
+						break;
+				}
+			}
+		?> 
 	</head>
 	<body>
 		<header>
-			<div><a href="basketballPassion.php"><button>Basketball Passion</button></a></div>
-			<div><a href="pallavoloEverywhere.php"><button>Pallavolo Everywhere</button></a></div>
-			<div><a href="racingSpirit.php"><button>Racing Spirit</button></a></div>
-			<div><a href="soccerEvolution.php"><button>Soccer Evolution</button></a></div>
-			<div><a href="tennisClash.php"><button>Tennis Clash</button></a></div>
+			<div><a href="shop/basketballPassion.php"><button>Basketball Passion</button></a></div>
+			<div><a href="shop/pallavoloEverywhere.php"><button>Pallavolo Everywhere</button></a></div>
+			<div><a href="shop/racingSpirit.php"><button>Racing Spirit</button></a></div>
+			<div><a href="shop/soccerEvolution.php"><button>Soccer Evolution</button></a></div>
+			<div><a href="shop/tennisClash.php"><button>Tennis Clash</button></a></div>
 			<div>
 				<a href="login.php"><button>Login</button></a>
 			</div>

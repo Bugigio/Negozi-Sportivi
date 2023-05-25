@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 18, 2023 alle 18:10
+-- Creato il: Mag 25, 2023 alle 09:13
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -165,7 +165,7 @@ CREATE TABLE `utenti` (
   `nome` varchar(30) NOT NULL,
   `cognome` varchar(15) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `città` varchar(100) NOT NULL,
+  `citta` varchar(100) NOT NULL,
   `via` varchar(50) NOT NULL,
   `numero_civico` int(3) NOT NULL,
   `provincia` varchar(2) NOT NULL
