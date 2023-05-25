@@ -9,17 +9,17 @@
 	</head>
 	<body>
 		<header>
-			<div><a href="shop/basketballPassion.php"><button>Basketball Passion</button></a></div>
-			<div><a href="shop/racingSpirit.php"><button>Racing Spirit</button></a></div>
-			<div><a href="shop/soccerEvolution.php"><button>Soccer Evolution</button></a></div>
-			<div><a href="shop/tennisClash.php"><button>Tennis Clash</button></a></div>
+			<div><a href="shop/basketballPassion.php"><button>BASKETBALL PASSION</button></a></div>
+			<div><a href="shop/racingSpirit.php"><button>RACING SPIRIT</button></a></div>
+			<div><a href="shop/soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
+			<div><a href="shop/tennisClash.php"><button>TENNIS CLASH</button></a></div>
 			<div><a href="../account.php"><button>ACCOUNT</button></a></div>
 			<div><a href="../home.php?logout=1"><button>LOGOUT</button></a></div>
 		</header>
 		<div class="container">
 			<?php 
 				$db = new mysqli("localhost", "root", "", "accessport");
-				$query = "SELECT * FROM articolo WHERE nome_magazzino LIKE 'Pallavolo Everywhere';";
+				$query = "SELECT * FROM articolo WHERE nome_magazzino LIKE 'PALLAVOLO EVERYWHERE';";
 				$articoli = $db->query($query);
 				foreach($articoli as $a) {
 					?>

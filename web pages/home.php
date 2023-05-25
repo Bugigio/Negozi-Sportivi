@@ -27,13 +27,13 @@
 	</head>
 	<body>
 		<header>
-			<div><a href="shop/basketballPassion.php"><button>Basketball Passion</button></a></div>
-			<div><a href="shop/pallavoloEverywhere.php"><button>Pallavolo Everywhere</button></a></div>
-			<div><a href="shop/racingSpirit.php"><button>Racing Spirit</button></a></div>
-			<div><a href="shop/soccerEvolution.php"><button>Soccer Evolution</button></a></div>
-			<div><a href="shop/tennisClash.php"><button>Tennis Clash</button></a></div>
-			<div><a href="login.php"><button>Login</button></a></div>
-			<div><a href="registrati.php"><button>Registrati</button></a></div>
+			<div><a href="shop/basketballPassion.php"><button>BASKETBALL PASSION</button></a></div>
+			<div><a href="shop/pallavoloEverywhere.php"><button>PALLAVOLO EVERYWHERE</button></a></div>
+			<div><a href="shop/racingSpirit.php"><button>RACING SPIRIT</button></a></div>
+			<div><a href="shop/soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
+			<div><a href="shop/tennisClash.php"><button>TENNIS CLASH</button></a></div>
+			<div><a href="login.php"><button>LOGIN</button></a></div>
+			<div><a href="registrati.php"><button>REGISTRATI</button></a></div>
 		</header>
 		<form action="home.php" method="post">
 			<h1>Registrati alla nostra newsletter!</h1>
