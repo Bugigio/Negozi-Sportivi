@@ -6,6 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
 		<link rel="stylesheet" href="../css/home.css">
+		<!--link per le librerie necessarie per supportare le icone-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" 
+		referrerpolicy="no-referrer" />
 		<title>HOME</title>
 		<style>
 			header {
@@ -29,6 +33,7 @@
 	<!-- CIGANA -->
 	<body>
 		<header class="header clearfix">
+		<a href="" class="header__logo">Logo</a>
 			<a href="" class="header__icon-bar">
 				<span></span>
 				<span></span>
@@ -42,6 +47,7 @@
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
 				<div class="header__menu__item"><a href="login.php">LOGIN</a></div>
 				<div class="header__menu__item"><a href="registrati.php">REGISTRATI</a></div>
+				<div class="header__menu__item"><a href="carrello.php">CARRELLO</a></div>
 			</div>
 		</header>
 		
