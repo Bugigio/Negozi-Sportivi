@@ -8,13 +8,20 @@
 		<link rel="stylesheet" href="../../css/shop.css">
 	</head>
 	<body>
-		<header>
-			<div><a href="pallavoloEverywhere.php"><button>PALLAVOLO EVERYWHERE</button></a></div>
-			<div><a href="racingSpirit.php"><button>RACING SPIRIT</button></a></div>
-			<div><a href="soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
-			<div><a href="tennisClash.php"><button>TENNIS CLASH</button></a></div>
-			<div><a href="../account.php"><button>ACCOUNT</button></a></div>
-			<div><a href="../home.php?logout=1"><button>LOGOUT</button></a></div>
+		<header class="header clearfix">
+			<a href="" class="header__icon-bar">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+			<div class="header__menu animate">
+				<div><a href="pallavoloEverywhere.php"><button>PALLAVOLO EVERYWHERE</button></a></div>
+				<div><a href="racingSpirit.php"><button>RACING SPIRIT</button></a></div>
+				<div><a href="soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
+				<div><a href="tennisClash.php"><button>TENNIS CLASH</button></a></div>
+				<div><a href="../account.php"><button>ACCOUNT</button></a></div>
+				<div><a href="../home.php?logout=1"><button>LOGOUT</button></a></div>
+			</div>
 		</header>
 		<div class="container">
 			<?php 
