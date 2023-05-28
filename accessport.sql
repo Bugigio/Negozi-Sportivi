@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 25, 2023 alle 10:31
+-- Creato il: Mag 28, 2023 alle 18:37
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `acquistare` (
   `id_articolo` int(11) NOT NULL,
   `email_utente` varchar(100) NOT NULL,
-  `data/ora_acquisto` datetime NOT NULL
+  `data/ora_acquisto` datetime NOT NULL,
+  `carrello` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `acquistare`
+--
+
+INSERT INTO `acquistare` (`id_articolo`, `email_utente`, `data/ora_acquisto`, `carrello`) VALUES
+(5, 'v@v', '2023-05-28 17:58:32', 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +229,8 @@ ALTER TABLE `articolo`
 -- Indici per le tabelle `bilancio`
 --
 ALTER TABLE `bilancio`
-  ADD PRIMARY KEY (`cod_bilancio`);
+  ADD PRIMARY KEY (`cod_bilancio`),
+  ADD KEY `bilancio_ibfk_1` (`nome_magazzino`);
 
 --
 -- Indici per le tabelle `dipendenti`
@@ -312,6 +321,12 @@ ALTER TABLE `acquistare`
 ALTER TABLE `articolo`
   ADD CONSTRAINT `magazzino` FOREIGN KEY (`nome_magazzino`) REFERENCES `magazzino` (`nome`) ON UPDATE CASCADE,
   ADD CONSTRAINT `offerta` FOREIGN KEY (`cod_offerta`) REFERENCES `offerte` (`ID_offerta`) ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `bilancio`
+--
+ALTER TABLE `bilancio`
+  ADD CONSTRAINT `bilancio_ibfk_1` FOREIGN KEY (`nome_magazzino`) REFERENCES `magazzino` (`nome`) ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `ordini`
