@@ -56,6 +56,14 @@
 		$civico = $_POST['civico'];
 		$provincia = $_POST['provincia'];
 
+		$query_ricerca_errori = "SELECT * FROM utenti WHERE email LIKE '" . $email . "'";
+		foreach($db->query($query_ricerca_errori) as $riga) {
+			if($riga["email"] ==  $email) {
+				header("location: registrati.php?err=1");
+				die();
+			}
+		}
+
 		$query = "INSERT INTO utenti(nome, cognome, `password`, email, citta, via, numero_civico, provincia) values 
 				('$nome', '$cognome', '$password','$email', '$citta', '$via', '$civico', '$provincia');";
 

@@ -27,7 +27,7 @@
 						<h3><?php echo $a["nome_articolo"]; ?></h3>
 						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo">
 						<p><?php echo $a["tipo_articolo"]; ?></p>
-						<input type="button" value="<?php echo $a["ID_articolo"]; ?>">
+						<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>">
 					</div>
 					<?php
 				}
