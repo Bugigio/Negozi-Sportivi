@@ -1,3 +1,4 @@
+<!-- CIGANA -->
 <!DOCTYPE html>
 <html lang="it">
 	<head>
@@ -8,14 +9,24 @@
 		<link rel="stylesheet" href="../../css/shop.css">
 	</head>
 	<body>
-		<header>
-            <div><a href="basketballPassion.php"><button>BASKETBALL PASSION</button></a></div>
-			<div><a href="pallavoloEverywhere.php"><button>PALLAVOLO EVERYWHERE</button></a></div>
-			<div><a href="soccerEvolution.php"><button>SOCCER EVOLUTION</button></a></div>
-			<div><a href="tennisClash.php"><button>TENNIS CLASH</button></a></div>
-			<div><a href="../account.php"><button>ACCOUNT</button></a></div>
-			<div><a href="../home.php?logout=1"><button>LOGOUT</button></a></div>
+		<header class="header clearfix">
+			<a href="" class="header__logo">Logo</a>
+			<a href="" class="header__icon-bar">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+			<div class="header__menu animate">
+				<div class="header__menu__item"><a href="basketballPassion.php">BASKETBALL PASSION</a></div>
+				<div class="header__menu__item"><a href="pallavoloEverywhere.php">PALLAVOLO EVERYWHERE</a></div>
+				<div class="header__menu__item"><a href="soccerEvolution.php">SOCCER EVOLUTION</a></div>
+				<div class="header__menu__item"><a href="tennisClash.php">TENNIS CLASH</a></div>
+				<div class="header__menu__item"><a href="../account.php">ACCOUNT</a></div>
+				<div class="header__menu__item"><a href="../home.php?logout=1">LOGOUT</a></div>
+			</div>
 		</header>
+
+		<!-- TOMMASI -->
 		<div class="container">
 			<?php 
 				$db = new mysqli("localhost", "root", "", "accessport");
@@ -33,5 +44,25 @@
 				}
 			?>
 		</div>
+
+		<!-- CIGANA -->
+		<!-- FOOTER -->
+        <footer class="footer">
+            <p>©Copyright 2023 Gabriele Tommasi, Lorenzo Barattin, Alexandru Tanase & Andrea Cigana</p>
+            <p>Sede Legale Motta di Livenza - Presso l'Istituto Antonio Scarpa</p>
+	    </footer>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+
+					$(".header__icon-bar").click(function(e){
+
+						$(".header__menu").toggleClass('is-open');
+						e.preventDefault();
+
+					});
+			});
+		</script>
 	</body>
 </html>

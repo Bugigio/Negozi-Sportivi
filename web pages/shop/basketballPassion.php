@@ -1,3 +1,4 @@
+<!-- CIGANA -->
 <!DOCTYPE html>
 <html lang="it">
 	<head>
@@ -9,6 +10,7 @@
 	</head>
 	<body>
 		<header class="header clearfix">
+			<a href="" class="header__logo">Logo</a>
 			<a href="" class="header__icon-bar">
 				<span></span>
 				<span></span>
@@ -24,6 +26,8 @@
 				<div class="header__menu__item"><a href="carrello.php">CARRELLO</a></div>
 			</div>
 		</header>
+
+		<!-- TOMMASI -->
 		<div class="container">
 			<?php 
 				$db = new mysqli("localhost", "root", "", "accessport");
@@ -42,6 +46,7 @@
 			?>
 		</div>
 
+		<!-- CIGANA -->
 		<!-- FOOTER -->
         <footer class="footer">
             <p>©Copyright 2023 Gabriele Tommasi, Lorenzo Barattin, Alexandru Tanase & Andrea Cigana</p>

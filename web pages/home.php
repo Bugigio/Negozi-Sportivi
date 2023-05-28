@@ -1,3 +1,4 @@
+<!-- TOMMASI -->
 <!DOCTYPE html>
 <html lang="it">
 	<head>
@@ -30,10 +31,11 @@
 			}
 		?> 
 	</head>
+	
 	<!-- CIGANA -->
 	<body>
 		<header class="header clearfix">
-		<a href="" class="header__logo">Logo</a>
+			<a href="" class="header__logo">Logo</a>
 			<a href="" class="header__icon-bar">
 				<span></span>
 				<span></span>
@@ -47,7 +49,7 @@
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
 				<div class="header__menu__item"><a href="login.php">LOGIN</a></div>
 				<div class="header__menu__item"><a href="registrati.php">REGISTRATI</a></div>
-				<div class="header__menu__item"><a href="carrello.php">CARRELLO</a></div>
+				<div class="header__menu__item"><a href="shop/carrello.php">CARRELLO</a></div>
 			</div>
 		</header>
 		
