@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 28, 2023 alle 18:37
+-- Creato il: Mag 29, 2023 alle 21:57
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -39,7 +39,11 @@ CREATE TABLE `acquistare` (
 --
 
 INSERT INTO `acquistare` (`id_articolo`, `email_utente`, `data/ora_acquisto`, `carrello`) VALUES
-(5, 'v@v', '2023-05-28 17:58:32', 1);
+(2, 'v@v', '2023-05-29 17:31:56', 0),
+(2, 'v@v', '2023-05-29 19:34:28', 0),
+(2, 'v@v', '2023-05-29 19:36:14', 1),
+(3, 'v@v', '2023-05-29 19:35:58', 1),
+(4, 'v@v', '2023-05-29 19:35:59', 1);
 
 -- --------------------------------------------------------
 
@@ -65,11 +69,11 @@ CREATE TABLE `articolo` (
 --
 
 INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `percorso_immagine`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `ID_articolo`, `nome_magazzino`, `cod_offerta`) VALUES
-(32, 'pallone', 'img.jpg', 'carlo', 15.00, 20.00, NULL, 2, 'Pallavolo Everywhere', NULL),
-(10, 'maglia', 'maglia.jpg', 'Maglia Calcio', 50.00, 80.00, 5, 3, 'Pallavolo Everywhere', NULL),
-(5, 'racchetta', 'racchetta.jpg', 'Racchetta Tennis', 99.99, 99.99, NULL, 4, 'Pallavolo Everywhere', 2),
-(15, 'pallone', 'pallone.jpg', 'Pallone Basket', 25.00, 35.00, 3, 5, 'Pallavolo Everywhere', 3),
-(8, 'scarpe', 'scarpe.jpg', 'Scarpe Running', 99.99, 99.99, NULL, 6, 'Pallavolo Everywhere', 1);
+(32, 'pallone', 'img.jpg', 'carlo', 15.00, 20.15, NULL, 2, 'Pallavolo Everywhere', 1),
+(10, 'maglia', 'maglia.jpg', 'Maglia Calcio', 50.00, 80.00, NULL, 3, 'Pallavolo Everywhere', NULL),
+(5, 'racchetta', 'racchetta.jpg', 'Racchetta Tennis', 99.99, 99.99, NULL, 4, 'Pallavolo Everywhere', NULL),
+(15, 'pallone', 'pallone.jpg', 'Pallone Basket', 25.00, 35.00, NULL, 5, 'Pallavolo Everywhere', NULL),
+(8, 'scarpe', 'scarpe.jpg', 'Scarpe Running', 99.99, 99.99, NULL, 6, 'Pallavolo Everywhere', NULL);
 
 -- --------------------------------------------------------
 
@@ -99,6 +103,13 @@ CREATE TABLE `dipendenti` (
   `email` varchar(100) NOT NULL,
   `password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `dipendenti`
+--
+
+INSERT INTO `dipendenti` (`nome`, `cognome`, `email`, `password`) VALUES
+('Gabriele', 'Tommasi', 'g.t@gmail.com', 'abcd');
 
 -- --------------------------------------------------------
 
@@ -163,6 +174,13 @@ CREATE TABLE `offerte` (
   `data_inizio` date NOT NULL,
   `data_fine` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `offerte`
+--
+
+INSERT INTO `offerte` (`ID_offerta`, `percentuale_sconto`, `data_inizio`, `data_fine`) VALUES
+(1, 55, '2023-05-29', '2023-05-30');
 
 -- --------------------------------------------------------
 
@@ -296,7 +314,7 @@ ALTER TABLE `bilancio`
 -- AUTO_INCREMENT per la tabella `offerte`
 --
 ALTER TABLE `offerte`
-  MODIFY `ID_offerta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_offerta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
