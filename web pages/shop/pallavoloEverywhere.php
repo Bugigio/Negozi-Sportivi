@@ -7,6 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>PALLAVOLO EVERYWHERE</title>
 		<link rel="stylesheet" href="../../css/shop.css">
+		<script src="../JS/jquery.js"></script>
+		<script src="../JS/prezzo_totale.js"></script>
 	</head>
 	<body>
 		<header class="header clearfix">
@@ -36,9 +38,11 @@
 					?>
 					<div class="articolo">
 						<h3><?php echo $a["nome_articolo"]; ?></h3>
-						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo">
+						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
 						<p><?php echo $a["tipo_articolo"]; ?></p>
-						<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>">
+						<p><?php echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); ?></p>
+						<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>" />
+						<input type="button" onclick="<?php echo "aggiungiAlCarrello('" . $a["ID_articolo"] .  "', '" . $_COOKIE["utente"] . "')"; ?>" value="Aggiungi al carrello" />
 					</div>
 					<?php
 				}

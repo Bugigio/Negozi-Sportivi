@@ -58,9 +58,9 @@ header {
 
 header div {}
 
-div {
+/* div {
 	border: 1px solid black;
-}
+} */
 
 .container {
 	width: 100%;
@@ -82,7 +82,7 @@ div {
 }
 
 img {
-	max-width: 90%;
+	max-width: 100%;
 }
 
 

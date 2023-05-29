@@ -8,14 +8,33 @@
 		<title>CARRELLO</title>
 		<link rel="stylesheet" href="../../css/shop.css">
 		<script src="../JS/prezzo_totale.js"></script>
-		<?php 
-			if(isset($_POST['rimuovi'])) {} // trovare un metodo per rimuovere gli articoli
+		<?php
 
-			if(isset($_POST['acquista'])) {
+			if(isset($_POST['rimuovi'])) {
 				$db = new mysqli("localhost", "root", "", "accessport");
-				$query_acquista = "UPDATE acquistare SET carrello = 0 WHERE email_utente LIKE '" . $_COOKIE["utente"] . "' AND carrello = 1;";
+				$query = "DELETE FROM acquistare WHERE carrello = 1 AND email_utente LIKE '" . $_COOKIE["utente"] . "' AND id_articolo = " . $_POST['id_articolo'] . ";";
+				$db->query($query);
+				$db->close();
+				header("location: " . $_SERVER['PHP_SELF']);
+			} // trovare un metodo per rimuovere gli articoli
+
+			if(isset($_GET['acquista'])) {
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$query_acquista = "UPDATE acquistare SET carrello = '0' WHERE email_utente LIKE '" . $_COOKIE["utente"] . "' AND carrello = '1';";
 				$db->query($query_acquista);
 				header("location: carrello.php");
+				$db->close();
+			}
+
+			if(isset($_POST['id_articolo'])) {
+				// funzione di aggiungimento al carrello
+				header("Access-Control-Allow-Origin: *");
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$query_aggiungi_al_carrello = "INSERT INTO `acquistare`(`id_articolo`, `email_utente`, `carrello`) VALUES ('" . $_POST['id_articolo'] . "', '" . $POST['email_utente'] . "', '1');";
+				$db->query($query_aggiungi_al_carrello);
+				$db->close();
+				echo 1;
+				die();
 			}
 		?>
 	</head>
@@ -41,7 +60,6 @@
 
 		<!-- TOMMASI -->
 		<div class="container">
-			<form action="carrello.php" method="post">
 				<?php 
 					$db = new mysqli("localhost", "root", "", "accessport");
 					$query = "SELECT * FROM articolo
@@ -49,19 +67,20 @@
 					$articoli = $db->query($query);
 					foreach($articoli as $a) {
 						?>
-						<div class="articolo">
-							<h3><?php echo $a["nome_articolo"]; ?></h3>
-							<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo">
-							<p><?php echo $a["tipo_articolo"]; ?></p>
-							<p><?php echo $a["prezzo_vendita"]; ?></p>
-							<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>">
-
-						</div>
+						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+							<div class="articolo">
+								<h3><?php echo $a["nome_articolo"]; ?></h3>
+								<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
+								<p><?php echo $a["tipo_articolo"]; ?></p>
+								<p><?php echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); ?></p>
+								<input type="hidden" name="id_articolo" value="<?php echo $a["ID_articolo"]; ?>"/>
+								<input type="submit" name="rimuovi" value="Rimuovi articolo">
+							</div>
+						</form>
 						<?php
 					}
 				?>
-				<input type="submit" name="acquista" value="Acquista">
-			</form>
+				<a href="<?php echo $_SERVER['PHP_SELF']; ?>?acquista=1"><input type="button" name="acquista" value="Acquista"/></a>
 		</div>
 
 		<!-- CIGANA -->
