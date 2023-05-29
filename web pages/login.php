@@ -1,7 +1,7 @@
  <!-- TANASE -->
 <html>
     <head>
-        <title>Login con i file</title>
+        <title>LOGIN</title>
         <link rel=stylesheet href="../css/styleLR.css">
     </head>
     <body>
@@ -27,7 +27,7 @@
                 header("location: account.php");
                 die();
             } else if(isset($_COOKIE["dipendente"])) {
-                header("location: amministrazione.php");
+                header("location: amministrazione/amministrazione.php");
                 die();
             }
         ?>

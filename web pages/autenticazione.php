@@ -31,7 +31,7 @@
 				if($r["password"] == $password) {
 					// cookie
 					setcookie("dipendente", $r["email"], time() + (86400 * 30), "/");
-					header("location: amministrazione.php");
+					header("location: amministrazione/amministrazione.php");
 					die();
 				} else {
 					header("location: login.php?err=5");
