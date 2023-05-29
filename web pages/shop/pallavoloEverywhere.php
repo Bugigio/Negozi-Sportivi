@@ -40,7 +40,23 @@
 						<h3><?php echo $a["nome_articolo"]; ?></h3>
 						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
 						<p><?php echo $a["tipo_articolo"]; ?></p>
-						<p><?php echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); ?></p>
+						<p><?php // prezzo articolo se offerta o meno
+							if($a["cod_offerta"] == NULL) {
+								echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); 
+							} else {
+								$query_offerta = "SELECT * FROM offerte WHERE ID_offerta = " . $a["cod_offerta"] . " AND data_fine > CURRENT_DATE;";
+								$offerta = $db->query($query_offerta);
+								foreach($offerta as $o) {
+									if($o["ID_offerta"] == NULL) {
+										echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", ".");
+										$query_rimozione_offerta = "UPDATE articolo SET cod_offerta = NULL WHERE ID_articolo = " . $a["ID_articolo"] . ";";
+										$db->query($query_rimozione_offerta);
+									} else {
+										echo number_format(($a["prezzo_vendita"] - ($a["prezzo_vendita"]/100*$o["percentuale_sconto"])), 2, ",", ".");
+									}
+								}
+							}
+						?></p>
 						<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>" />
 						<input type="button" onclick="<?php echo "aggiungiAlCarrello('" . $a["ID_articolo"] .  "', '" . $_COOKIE["utente"] . "')"; ?>" value="Aggiungi al carrello" />
 					</div>

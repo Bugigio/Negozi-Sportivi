@@ -10,31 +10,12 @@
 		<script src="../JS/prezzo_totale.js"></script>
 		<?php
 
-			if(isset($_POST['rimuovi'])) {
-				$db = new mysqli("localhost", "root", "", "accessport");
-				$query = "DELETE FROM acquistare WHERE carrello = 1 AND email_utente LIKE '" . $_COOKIE["utente"] . "' AND id_articolo = " . $_POST['id_articolo'] . ";";
-				$db->query($query);
-				$db->close();
-				header("location: " . $_SERVER['PHP_SELF']);
-			} // trovare un metodo per rimuovere gli articoli
-
 			if(isset($_GET['acquista'])) {
 				$db = new mysqli("localhost", "root", "", "accessport");
 				$query_acquista = "UPDATE acquistare SET carrello = '0' WHERE email_utente LIKE '" . $_COOKIE["utente"] . "' AND carrello = '1';";
 				$db->query($query_acquista);
 				header("location: carrello.php");
 				$db->close();
-			}
-
-			if(isset($_POST['id_articolo'])) {
-				// funzione di aggiungimento al carrello
-				header("Access-Control-Allow-Origin: *");
-				$db = new mysqli("localhost", "root", "", "accessport");
-				$query_aggiungi_al_carrello = "INSERT INTO `acquistare`(`id_articolo`, `email_utente`, `carrello`) VALUES ('" . $_POST['id_articolo'] . "', '" . $POST['email_utente'] . "', '1');";
-				$db->query($query_aggiungi_al_carrello);
-				$db->close();
-				echo 1;
-				die();
 			}
 		?>
 	</head>
@@ -60,27 +41,43 @@
 
 		<!-- TOMMASI -->
 		<div class="container">
-				<?php 
-					$db = new mysqli("localhost", "root", "", "accessport");
-					$query = "SELECT * FROM articolo
-					JOIN acquistare AS a ON a.id_articolo = articolo.ID_articolo WHERE a.email_utente LIKE '" . $_COOKIE["utente"] . "' AND a.carrello = 1;";
-					$articoli = $db->query($query);
-					foreach($articoli as $a) {
-						?>
-						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-							<div class="articolo">
-								<h3><?php echo $a["nome_articolo"]; ?></h3>
-								<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
-								<p><?php echo $a["tipo_articolo"]; ?></p>
-								<p><?php echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); ?></p>
-								<input type="hidden" name="id_articolo" value="<?php echo $a["ID_articolo"]; ?>"/>
-								<input type="submit" name="rimuovi" value="Rimuovi articolo">
-							</div>
+			<?php 
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$query = "SELECT * FROM articolo
+				JOIN acquistare AS a ON a.id_articolo = articolo.ID_articolo WHERE a.email_utente LIKE '" . $_COOKIE["utente"] . "' AND a.carrello = 1;";
+				$articoli = $db->query($query);
+				foreach($articoli as $a) {
+					?>
+					<div class="articolo">
+						<form action="aggiungi_rimuovi_carrello.php" method="post">
+							<h3><?php echo $a["nome_articolo"]; ?></h3>
+							<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
+							<p><?php echo $a["tipo_articolo"]; ?></p>
+							<p><?php // prezzo articolo se offerta o meno
+								if($a["cod_offerta"] == NULL) {
+									echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); 
+								} else {
+									$query_offerta = "SELECT * FROM offerte WHERE ID_offerta = " . $a["cod_offerta"] . " AND data_fine > CURRENT_DATE;";
+									$offerta = $db->query($query_offerta);
+									foreach($offerta as $o) {
+										if($o["ID_offerta"] == NULL) {
+											echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", ".");
+											$query_rimozione_offerta = "UPDATE articolo SET cod_offerta = NULL WHERE ID_articolo = " . $a["ID_articolo"] . ";";
+											$db->query($query_rimozione_offerta);
+										} else {
+											echo number_format(($a["prezzo_vendita"] - ($a["prezzo_vendita"]/100*$o["percentuale_sconto"])), 2, ",", ".");
+										}
+									}
+								}
+							?></p>
+							<input type="hidden" name="id_articolo" value="<?php echo $a["ID_articolo"]; ?>"/>
+							<input type="submit" name="rimuovi" value="Rimuovi articolo"/>
 						</form>
-						<?php
-					}
-				?>
-				<a href="<?php echo $_SERVER['PHP_SELF']; ?>?acquista=1"><input type="button" name="acquista" value="Acquista"/></a>
+					</div>
+					<?php
+				}
+			?>
+			<a href="<?php echo $_SERVER['PHP_SELF']; ?>?acquista=1"><input type="button" name="acquista" value="Acquista"/></a>
 		</div>
 
 		<!-- CIGANA -->

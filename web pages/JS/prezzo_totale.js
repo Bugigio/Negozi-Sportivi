@@ -4,12 +4,13 @@ $(document).ready( function() {
 
 function aggiungiAlCarrello(articolo, utente) {
 	$.ajax({
-		method: "POST",
-		url: "http://localhost/web%pages/shop/carrello.php",
+		type: "POST",
+		url: "../shop/aggiungi_rimuovi_carrello.php",
 		data: {id_articolo: articolo, email_utente: utente},
 		success: function(esito) {
+			console.log(esito);
 			switch (esito) {
-				case 1:
+				case "1":
 					window.alert("Articolo aggiunto al carrello");
 					break;
 				default:
