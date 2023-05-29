@@ -38,7 +38,9 @@
 						<h3><?php echo $a["nome_articolo"]; ?></h3>
 						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo">
 						<p><?php echo $a["tipo_articolo"]; ?></p>
-						<input type="button" value="<?php echo $a["ID_articolo"]; ?>">
+						<p><?php echo number_format(($a["prezzo_vendita"] + ($a["prezzo_vendita"]/100*$a["rincaro"])), 2, ",", "."); ?></p>
+						<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>" />
+						<input type="button" onclick="<?php echo "aggiungiAlCarrello('" . $a["ID_articolo"] .  "', '" . $_COOKIE["utente"] . "')"; ?>" value="Aggiungi al carrello" />
 					</div>
 					<?php
 				}
