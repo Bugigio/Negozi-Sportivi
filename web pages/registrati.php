@@ -1,3 +1,4 @@
+ <!-- TANASE -->
 <html>
     <head>
         <title>Login con i file</title>
@@ -22,6 +23,7 @@
                 die();
             }
         ?>
+
         <form action=autenticazione.php method=post>
             <h1>Registrazione</h1>
             <input type=text name=nome placeholder="Nome" maxlength="30" required/>
