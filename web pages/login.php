@@ -1,3 +1,4 @@
+ <!-- TANASE -->
 <html>
     <head>
         <title>Login con i file</title>
@@ -29,7 +30,6 @@
                 header("location: amministrazione.php");
                 die();
             }
-
         ?>
         <form action=autenticazione.php method=post>
             <h1>Login</h1>
