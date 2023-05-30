@@ -47,7 +47,6 @@
 					?>
 					<div class="articolo">
 						<h3><?php echo $a["nome_articolo"]; ?></h3>
-						<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
 						<p><?php echo $a["tipo_articolo"]; ?></p>
 						<p><?php // prezzo articolo se offerta o meno
 							if($a["cod_offerta"] == NULL) { // verifica se un'offerta è associata all'articolo
