@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
 		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" 
 		referrerpolicy="no-referrer" />
-		<title>HOME</title>
+		<title>ACCESSPORT -HOME</title>
 		<style>
 			header {
 				display: flex;
@@ -48,7 +48,7 @@
 				<div class="header__menu__item"><a href="shop/soccerEvolution.php">SOCCER EVOLUTION</a></div>
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
 				<div class="header__menu__item"><a href="login.php">LOGIN</a></div>
-				<div class="header__menu__item"><a href="registrati.php">REGISTRATI</a></div>
+				<div class="header__menu__item"><a href="account.php">ACCOUNT</a></div>
 				<div class="header__menu__item"><a href="shop/carrello.php"><img src="../immagini/carrello.png" alt="Carrello" width="20px" /></a></div>
 			</div>
 		</header>
