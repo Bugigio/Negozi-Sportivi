@@ -11,11 +11,63 @@
 		<script src="../JS/prezzo_totale.js"></script>
 		<?php
 
+			if(!isset($_COOKIE['utente'])) {
+				header("location: login.php?err=1");
+			}
+
+			if(isset($_GET['err']) && isset($_GET['nome'])) {
+				echo "<script>";
+				switch ($_GET['err']) {
+					case 1:
+						echo "window.alert('La quantità acquistata dell'articolo " . $_GET['nome'] . " non è disponibile');";
+						break;
+					default:
+						echo "window.alert('Errore generico');";
+						break;
+				}
+				echo "</script>";
+			}
+
+			if(isset($_GET['success'])) {
+				echo "<script>";
+				switch ($_GET['success']) {
+					case 1:
+						echo "window.alert('Acquisto completato');";
+						break;
+				}
+				echo "</script>";
+			}
+
 			if(isset($_GET['acquista'])) {
 				$db = new mysqli("localhost", "root", "", "accessport");
+
+				$query_conteggio_articoli = "SELECT ar.ID_articolo, ar.nome_articolo , COUNT(*) AS quantita FROM acquistare as a\n"
+
+				. "JOIN articolo as ar on ar.ID_articolo = a.id_articolo\n"
+
+				. "WHERE a.email_utente LIKE '" . $_COOKIE['utente'] . "' AND a.carrello = 1\n"
+			
+				. "GROUP BY ar.ID_articolo, ar.nome_articolo;";
+
+				$articoli = $db->query($query_conteggio_articoli);
+
+				foreach($articoli as $a) { // controllo se la quantità dell'articolo nel database è maggiore a quella da acquistare
+					$query_verifica_quantità = "SELECT * FROM articolo AS a WHERE a.ID_articolo = " . $a["ID_articolo"] . ";";
+					$quantita = $db->query($query_verifica_quantità);
+					foreach($quantita as $q) {
+						if($q["quantita"] < $a["quantita"]) {
+							header("location: carrello.php?err=1&nome=" . $a["nome_articolo"]);
+							die();
+						}
+						$quantita_da_aggiornare = $q["quantita"] - $a["quantita"];
+						$query_aggiornamento_quantita = "UPDATE articolo SET quantita = " . $quantita_da_aggiornare . " WHERE ID_articolo = " . $a["ID_articolo"] . ";";
+						$db->query($query_aggiornamento_quantita);
+					}
+				}
+
 				$query_acquista = "UPDATE acquistare SET carrello = 0 WHERE email_utente LIKE '" . $_COOKIE["utente"] . "' AND carrello = '1';";
 				$db->query($query_acquista);
-				header("location: carrello.php");
+				header("location: carrello.php?success=1");
 				$db->close();
 			}
 		?>
@@ -79,7 +131,7 @@
 								$query_prezzo_pagato = "UPDATE acquistare SET prezzo_pagato = '" . $prezzo . "' WHERE id_articolo = " . $a["ID_articolo"] . ";";
 								$db->query($query_prezzo_pagato);
 							?></p>
-							<input type="text" name="prezzo_pagato" value="<?php echo $prezzo; ?>">
+							<input type="hidden" name="prezzo_pagato" value="<?php echo $prezzo; ?>">
 							<input type="hidden" name="data/ora_acquisto" value="<?php echo $a["data/ora_acquisto"]?>">
 							<input type="hidden" name="id_articolo" value="<?php echo $a["ID_articolo"]; ?>"/>
 							<input type="submit" name="rimuovi" value="Rimuovi articolo"/>
