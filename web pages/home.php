@@ -53,6 +53,42 @@
 			</div>
 		</header>
 		
+
+		<section class="cover">
+			<div class="cover__filter"></div>
+			<div class="cover__caption">
+				<div class="cover__caption__copy">
+					<h1>BENVENUTI IN ACCESSPORT</h1>
+					<a href="" class="button"> Gift</a>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="banner clearfix">
+			<div class="banner__image"></div>
+			<div class="banner__copy">
+				<div class="banner__copy__text">
+					<h3>HAI BISOGNO DI UNA VACANZA?</h3>
+					<h4>Prenotala ora!</h4>
+					<p><b>Sceglie tra oltre 1000 offerte viaggio, per passare un'estate indimenticabile.</b></p>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="banner clearfix">
+			<div class="banner__copy">
+				<div class="banner__copy__text">
+					<h3>HAI BISOGNO DI UNA VACANZA?</h3>
+					<h4>Prenotala ora!</h4>
+					<p><b>Sceglie tra oltre 1000 offerte viaggio, per passare un'estate indimenticabile.</b></p>
+				</div>
+			</div>
+			<div class="banner__image"></div>
+		</section>
+
+
 		<form action="home.php" method="post">
 			<h1>Registrati alla nostra newsletter!</h1>
 			<input type=email name=email placeholder="Email" required/>
