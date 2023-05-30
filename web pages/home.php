@@ -49,7 +49,7 @@
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
 				<div class="header__menu__item"><a href="login.php">LOGIN</a></div>
 				<div class="header__menu__item"><a href="account.php">ACCOUNT</a></div>
-				<div class="header__menu__item"><a href="shop/carrello.php"><img src="../immagini/carrello.png" alt="Carrello" width="20px" /></a></div>
+				<div class="header__menu__item"><a href="shop/carrello.php"><img src="immagini/carrello.png" alt="Carrello" width="20px" /></a></div>
 			</div>
 		</header>
 		
