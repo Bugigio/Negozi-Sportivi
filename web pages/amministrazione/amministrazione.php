@@ -1,14 +1,24 @@
- <!-- TANASE -->
- <!-- TOMMASI -->
-<html>
+<!-- TANASE -->
+<!-- TOMMASI -->
+<!DOCTYPE html>
+<html lang="it">
     <head>
+        <meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+		<link rel="stylesheet" href="../css/home.css">
+		<!--link per le librerie necessarie per supportare le icone-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" 
+		referrerpolicy="no-referrer" />
         <title>AMMINISTRAZIONE</title>
     </head>
     <body>
-        <h1>Amministrazione</h1>
-
+        <!-- CIGANA -->
+        <h1>AMMINISTRAZIONE</h1>
         <header class="header clearfix">
-			<a href="" class="header__logo">Logo</a>
+            <a href="" class="header__logo"><img src="../immagini/logoNegoziSportivi.png" alt="Logo" width="50px" /></a>
 			<a href="" class="header__icon-bar">
 				<span></span>
 				<span></span>
@@ -20,10 +30,11 @@
 				<div class="header__menu__item"><a href="shop/racingSpirit.php">RACING SPIRIT</a></div>
 				<div class="header__menu__item"><a href="shop/soccerEvolution.php">SOCCER EVOLUTION</a></div>
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
-                <div class="header__menu__item"><a href="../home.php?logout=1">LOGOUT</a></div>
+                <div class="header__menu__item"><a href="../home.php?logout=0">LOGOUT</a></div>
 			</div>
 		</header>
 
+        <!-- TOMMASI -->
         <form action=amministrazioneM.php method=post>
             <select name="magazzino">
                 <option value="">Seleziona il negozio/magazzino</option>
@@ -39,5 +50,25 @@
             <input type="submit" name="accedi" value="Accedi">
         </form>
         <div class=logout><a href=home.php></a></div>
+
+        <!-- CIGANA -->
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>©Copyright 2023 Gabriele Tommasi, Lorenzo Barattin, Alexandru Tanase & Andrea Cigana</p>
+            <p>Sede Legale Motta di Livenza - Presso l'Istituto Antonio Scarpa</p>
+	    </footer>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+
+					$(".header__icon-bar").click(function(e){
+
+						$(".header__menu").toggleClass('is-open');
+						e.preventDefault();
+
+					});
+			});
+		</script>
     </body>
 </hmtl>

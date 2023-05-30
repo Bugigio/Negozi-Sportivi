@@ -17,7 +17,7 @@ a:hover{color: #1af3a4;}
 
 /* header */
 .header{background: #ffffff}
-.header__logo{color:#fff; float:left;display: block;padding:20px;text-decoration: none;}
+.header__logo{color:#000000; float:left;display: block;padding:20px;text-decoration: none;}
 .header__menu{float:right;margin:0; padding:0;}
 .header__menu__item{display: inline-block; font-weight: bold;}
 .header__menu__item a{color:#000000;display: block;padding:20px;text-decoration: none}
@@ -42,7 +42,7 @@ h3 {
 p {
 	text-align: justify;
 	font-size: 15px;
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 
 header {
@@ -89,8 +89,8 @@ img {
 
 /* Footer */
 .footer{
-	background: #b9b9b9; 
-	padding:30px;color:#fff; 
+	background: #ffffff; 
+	padding:30px;color:#000000; 
 	margin-top: 40px;
 	position: fixed;
 	bottom: 0;
