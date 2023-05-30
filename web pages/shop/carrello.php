@@ -6,13 +6,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>CARRELLO</title>
-		<link rel="stylesheet" href="../../css/shop.css">
+		<link rel="stylesheet" href="../css/shop.css">
 		<script src="../JS/jquery.js"></script>
 		<script src="../JS/prezzo_totale.js"></script>
 		<?php
 
 			if(!isset($_COOKIE['utente'])) {
-				header("location: login.php?err=1");
+				header("location: ../login.php?err=1");
 			}
 
 			if(isset($_GET['err']) && isset($_GET['nome'])) {
@@ -105,7 +105,6 @@
 					<div class="articolo">
 						<form action="aggiungi_rimuovi_carrello.php" method="post">
 							<h3><?php echo $a["nome_articolo"]; ?></h3>
-							<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
 							<p><?php echo $a["tipo_articolo"]; ?></p>
 							<p><?php // prezzo articolo se offerta o meno
 								$prezzo = 0;

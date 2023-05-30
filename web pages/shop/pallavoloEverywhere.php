@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>PALLAVOLO EVERYWHERE</title>
-		<link rel="stylesheet" href="../../css/shop.css">
+		<link rel="stylesheet" href="../css/shop.css">
 		<script src="../JS/jquery.js"></script>
 		<script src="../JS/prezzo_totale.js"></script>
 	</head>

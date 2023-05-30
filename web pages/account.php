@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
-		<link rel="stylesheet" href="../css/shop.css">
+		<link rel="stylesheet" href="css/shop.css">
 		<title>ACCOUNT</title>
 		<?php 
 			if(!isset($_COOKIE["utente"])) {
@@ -42,14 +42,15 @@
 			<?php 
 				$db = new mysqli("localhost", "root", "", "accessport");
 				$query = "SELECT * FROM articolo
-				JOIN acquistare AS a ON a.id_articolo = articolo.ID_articolo WHERE a.email_utente LIKE '" . $_COOKIE["utente"] . "' AND a.carrello = 0;";
+				JOIN acquistare AS a ON a.id_articolo = articolo.ID_articolo
+				WHERE a.email_utente LIKE '" . $_COOKIE["utente"] . "' AND a.carrello = 0
+				ORDER BY a.`data/ora_acquisto`;";
 				$articoli = $db->query($query);
 				foreach($articoli as $a) {
 					?>
 					<div class="articolo">
 						<form action="aggiungi_rimuovi_carrello.php" method="post">
 							<h3><?php echo $a["nome_articolo"]; ?></h3>
-							<img src="<?php echo $a["percorso_immagine"]; ?>" alt="immagine articolo" />
 							<p><?php echo $a["tipo_articolo"]; ?></p>
 							<p><?php
 								echo $a["prezzo_pagato"] . "<br> "

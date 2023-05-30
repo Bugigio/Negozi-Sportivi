@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>LOGIN</title>
-        <link rel=stylesheet href="../css/styleLR.css">
+        <link rel=stylesheet href="css/styleLR.css">
     </head>
     <body>
         <?php 
