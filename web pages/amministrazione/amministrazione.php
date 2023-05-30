@@ -20,7 +20,7 @@
 				<div class="header__menu__item"><a href="shop/racingSpirit.php">RACING SPIRIT</a></div>
 				<div class="header__menu__item"><a href="shop/soccerEvolution.php">SOCCER EVOLUTION</a></div>
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
-                <div class="header__menu__item"><a href="../home.php?logout=1">LOGOUT</a></div>
+                <div class="header__menu__item"><a href="../home.php?logout=0">LOGOUT</a></div>
 			</div>
 		</header>
 
