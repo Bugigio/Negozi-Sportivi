@@ -8,13 +8,15 @@
 		$db->close();
 		echo 1;
 		die();
-	}
-
-	if(isset($_POST['rimuovi'])) {
+	} else if(isset($_POST['rimuovi'])) {
 		$db = new mysqli("localhost", "root", "", "accessport");
 		$query = "DELETE FROM acquistare WHERE carrello = 1 AND email_utente LIKE '" . $_COOKIE["utente"] . "' AND id_articolo = " . $_POST['id_articolo'] . " AND `data/ora_acquisto` = '" . $_POST['data/ora_acquisto'] . "';";
 		$db->query($query);
 		$db->close();
 		header("location: carrello.php");
+		die();
+	} else {
+		header("location: ../login.php?err=1");
+		die();
 	}
 ?>
