@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<header class="header clearfix">
-			<a href="" class="header__logo"><img src="../../immagini/logoNegoziSportivi.png" alt="Logo" width="50px" /></a>
+			<a href="" class="header__logo"><img src="../immagini/logoNegoziSportivi.png" alt="Logo" width="50px" /></a>
 			<a href="" class="header__icon-bar">
 				<span></span>
 				<span></span>
