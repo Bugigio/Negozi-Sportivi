@@ -1,3 +1,21 @@
+<!-- TANASE -->
+<!-- TOMMASI -->
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+		<link rel="stylesheet" href="../css/shop.css">
+		<!--link per le librerie necessarie per supportare le icone-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" 
+		referrerpolicy="no-referrer" />
+        <title>AMMINISTRAZIONE MAGAZZINO</title>
+    </head>
+    
+
 <!-- TOMMASI -->
 <?php 
     if(!isset($_COOKIE["dipendente"])) {
@@ -10,11 +28,20 @@
     }
 ?>
 <html>
-    <head>
-        <title>Amministrazione magazzino</title>
-    </head>
-    <body>
-        <h1>Amministrazione magazzino</h1>
+	<body>
+        <!-- CIGANA -->
+        <header class="header clearfix">
+            <a href="" class="header__logo"><img src="../immagini/logoNegoziSportivi.png" alt="Logo" width="50px" /></a>
+			<a href="" class="header__icon-bar">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+			<div class="header__menu animate">
+                <div class="header__menu__item"><a href="../home.php?logout=0">LOGOUT</a></div>
+			</div>
+		</header>
+        <h1>AMMINISTRAZIONE MAGAZZINO</h1>
 		<form action="#" method="post">
 			<input type="hidden" name="magazzino" value="<?php if(isset($_POST['magazzino'])) echo $_POST['magazzino']; ?>">
 			<input type="submit" name="submit" value="Articoli">
