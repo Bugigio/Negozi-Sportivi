@@ -1,5 +1,4 @@
-<!-- TANASE -->
-<!-- TOMMASI -->
+<!-- CIGANA -->
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -14,40 +13,37 @@
 		referrerpolicy="no-referrer" />
         <title>AMMINISTRAZIONE MAGAZZINO</title>
     </head>
-    
-
-<!-- TOMMASI -->
-<?php 
-    if(!isset($_COOKIE["dipendente"])) {
-        header("location: login.php?err=5");
-        die();
-    }
-	session_start();
-    if(isset($_POST['magazzino'])) {
-        $_SESSION['magazzino'] = $_POST['magazzino'];
-    }
-	if(!isset($_SESSION['magazzino'])) {
-		header("location: amministrazione.php");
-		die();
-	}
-	if(isset($_REQUEST['err'])) {
-		echo '<script> window.alert("';
-		switch ($_REQUEST['err']) {
-			case '1':
-				echo 'Offerta non esistente';
-				break;
-			case '2':
-				echo "Un articolo non può avere un'offerta e un rincaro";
-				break;
-			default:
-				echo 'Modifica eseguita con successo';
-				break;
+	<!-- TOMMASI -->
+	<?php 
+		if(!isset($_COOKIE["dipendente"])) {
+			header("location: login.php?err=5");
+			die();
 		}
-		echo '");</script>';
-	}
+		session_start();
+		if(isset($_POST['magazzino'])) {
+			$_SESSION['magazzino'] = $_POST['magazzino'];
+		}
+		if(!isset($_SESSION['magazzino'])) {
+			header("location: amministrazione.php");
+			die();
+		}
+		if(isset($_REQUEST['err'])) {
+			echo '<script> window.alert("';
+			switch ($_REQUEST['err']) {
+				case '1':
+					echo 'Offerta non esistente';
+					break;
+				case '2':
+					echo "Un articolo non può avere un'offerta e un rincaro";
+					break;
+				default:
+					echo 'Modifica eseguita con successo';
+					break;
+			}
+			echo '");</script>';
+		}
 
-?>
-<html>
+	?>
 	<body>
         <!-- CIGANA -->
         <header class="header clearfix">
