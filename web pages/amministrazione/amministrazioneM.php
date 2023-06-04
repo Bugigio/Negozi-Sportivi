@@ -22,10 +22,14 @@
         header("location: login.php?err=5");
         die();
     }
-    if(!isset($_POST['magazzino'])) {
-        header("location: amministrazione.php");
-        die();
+	session_start();
+    if(isset($_POST['magazzino'])) {
+        $_SESSION['magazzino'] = true;
     }
+	if(!isset($_SESSION['magazzino'])) {
+		header("location: amministrazione.php");
+		die();
+	}
 ?>
 <html>
 	<body>
@@ -58,26 +62,51 @@
 				switch ($_POST['submit']) {
 					case 'Articoli':
 						?>
-						<form action="#" method="post">
-							<table border="1">
-								<tr><td>Articoli</td></tr>
-								<tr><td>ID_articolo</td><td>nome_articolo</td><td>tipo_articolo</td><td>quantita</td><td>prezzo acquisto</td><td>prezzo vendita</td><td>rincaro</td><td>codice offerta</td></tr>
-								<?php 
-								$query_articoli = "SELECT * FROM articolo WHERE nome_magazzino LIKE '" . $_POST['magazzino'] . "';";
-								$articoli = $db->query($query_articoli);
-								$i = 1;
-								foreach($articoli as $a) {
-									echo "<tr><td><input type='number' name='ID_articolo_$i' value='" . $a["ID_articolo"] . "' readonly /></td><td><input type='text' name='nome_articolo_$i' value='" . $a["nome_articolo"] . "'/></td><td><input type='text' name='tipo_articolo_$i' value='" . $a["tipo_articolo"] . "'/></td><td><input type=number name='quantita_$i' value='" . $a["quantita"] . "'/></td><td><input type=text name='prezzo_acquisto_$i' value='" . $a["prezzo_acquisto"] . "' readonly/></td><td><input type=text name='prezzo_vendita_$i' value='" . $a["prezzo_vendita"] . "'/></td><td><input type=number min=0 max=100 name=rincaro value='" . $a["rincaro"] . "'/></td><td><input type=number value='" . $a["cod_offerta"] . "' readonly/></td></tr>";
-									$i++;
-								}
+						<table border="1">
+							<tr><td>Articoli</td></tr>
+							<tr><td>ID_articolo</td><td>nome_articolo</td><td>tipo_articolo</td><td>quantita</td><td>prezzo acquisto</td><td>prezzo vendita</td><td>rincaro</td><td>codice offerta</td></tr>
+							<?php 
+							$query_articoli = "SELECT * FROM articolo WHERE nome_magazzino LIKE '" . $_POST['magazzino'] . "';";
+							$articoli = $db->query($query_articoli);
+
+
+							foreach($articoli as $a) {
 								?>
-							</table>
-						</form>
+								<form action="#" method="post">
+								<?php
+								echo "<tr><td><input type='number' name='ID_articolo' value='" . $a["ID_articolo"] . "' readonly /></td><td><input type='text' name='nome_articolo' value='" . $a["nome_articolo"] . "'/></td><td><input type='text' name='tipo_articolo' value='" . $a["tipo_articolo"] . "'/></td><td><input type=number name='quantita' value='" . $a["quantita"] . "'/></td><td><input type=text name='prezzo_acquisto' value='" . $a["prezzo_acquisto"] . "' readonly/></td><td><input type=text name='prezzo_vendita' value='" . $a["prezzo_vendita"] . "'/></td><td><input type=number min=0 max=100 name=rincaro value='" . $a["rincaro"] . "'/></td><td><input type=number value='" . $a["cod_offerta"] . "' readonly/></td><td><input type=submit name=rimuovi_articolo value=Rimuovi /></td><td><input type=submit name=modifica_articolo value=Modifica /></td></tr>";
+								?>
+								</form>
+								<?php
+							}
+							?>
+							</form>
+						</table>
+						
 
 						<?php
 						break;
 					case 'Utenti':
-						# code...
+						?>
+						<table border="1">
+							<tr><td>Utenti</td></tr>
+							<tr><td>Email</td><td>nome</td><td>cognome</td><td>citta</td><td>via</td><td>numero_civico</td><td>provincia</td></tr>
+							<?php 
+							$query_utenti = "SELECT * FROM utenti;";
+							$utenti = $db->query($query_utenti);
+							foreach($utenti as $u) {
+								?>
+								<form action="#" method="post">
+								<?php
+								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								?>
+								</form>
+								<?php
+							}
+							?>
+							
+						</table>
+						<?php
 						break;
 					case 'Ordini':
 						# code...
@@ -95,6 +124,13 @@
 						# code...
 						break;
 				}
+			} else if(isset($_POST['rimuovi_articolo'])) {
+				$id_articolo = $_POST['ID_articolo'];
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$query_rimozione_acquisti = "DELETE FROM acquistare WHERE id_articolo = $id_articolo;";
+				$db->query($query_rimozione_acquisti);
+				$query = "DELETE FROM articolo WHERE ID_articolo = $id_articolo;";
+				$db->query($query);
 			}
 		?>
     </body>
