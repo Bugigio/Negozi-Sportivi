@@ -83,13 +83,13 @@
 				<span></span>
 			</a>
 			<div class="header__menu animate">
-				<div class="header__menu__item"><a href="../home.php">HOME</a></div>
 				<div class="header__menu__item"><a href="basketballPassion.php">BASKETBALL PASSION</a></div>
 				<div class="header__menu__item"><a href="pallavoloEverywhere.php">PALLAVOLO EVERYWHERE</a></div>
 				<div class="header__menu__item"><a href="racingSpirit.php">RACING SPIRIT</a></div>
 				<div class="header__menu__item"><a href="soccerEvolution.php">SOCCER EVOLUTION</a></div>
 				<div class="header__menu__item"><a href="tennisClash.php">TENNIS CLASH</a></div>
 				<div class="header__menu__item"><a href="../account.php">ACCOUNT</a></div>
+				<div class="header__menu__item"><a href="../home.php?logout=1">LOGOUT</a></div>
 			</div>
 		</header>
 
