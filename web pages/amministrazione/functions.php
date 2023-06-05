@@ -1,6 +1,6 @@
 <?php 
 	if(isset($_POST['modifica_articolo'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		if($_POST['cod_offerta']) {
 			$query_offerte = "SELECT * FROM offerte WHERE ID_offerta = '" . $_POST['cod_offerta'] . "';";
 			$offerte = $db->query($query_offerte);
@@ -33,7 +33,7 @@
 
 
 	if(isset($_POST['aggiungi_articolo'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		
 		if(!is_numeric($_POST['prezzo_acquisto']) || !is_numeric($_POST['prezzo_vendita'])) {
 			header("location: amministrazioneM.php?err=3");
@@ -73,7 +73,7 @@
 
 	if(isset($_POST['rimuovi_articolo'])) {
 		$id_articolo = $_POST['ID_articolo'];
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$query_rimozione_acquisti = "DELETE FROM acquistare WHERE id_articolo = $id_articolo;";
 		$db->query($query_rimozione_acquisti);
 		$query = "DELETE FROM articolo WHERE ID_articolo = $id_articolo;";
@@ -84,7 +84,7 @@
 
 
 	if(isset($_POST['rimuovi_utente'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$email_utente = $_POST['email'];
 		$query_rimozione_acquisti = "DELETE FROM acquistare WHERE email_utente LIKE '$email';";
 		$query_rimozione = "DELETE FROM utenti WHERE email_utente LIKE '$email';";
@@ -97,7 +97,7 @@
 
 
 	if(isset($_POST['aggiungi_fornitore'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$query_inserimento = "INSERT INTO fornitori(`nome`) VALUES('" . $_POST['nome_fornitore'] . "');";
 		$db->query($query_inserimento);
 		$db->close();
@@ -107,7 +107,7 @@
 
 
 	if(isset($_POST['aggiungi_offerta'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$data_iniziale = $_POST['data_iniziale']; // La data originale nel formato "gg/mm/aaaa"
 		$data_finale = $_POST['data_finale'];
 
@@ -127,7 +127,7 @@
 
 	
 	if(isset($_POST['rimuovi_offerta'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$query_rimozione_sconti_articoli = "UPDATE articolo SET cod_offerta = NULL WHERE cod_offerta = " . $_POST['ID_offerta'] . ";";
 		$db->query($query_rimozione_sconti_articoli);
 		$query_rimozione_offerta = "DELETE FROM offerte WHERE ID_offerta = " . $_POST['ID_offerta'] . ";";
@@ -139,7 +139,7 @@
 
 
 	if(isset($_POST['rimuovi_newsletter'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$query_rimozione_newsletter = "DELETE FROM newsletter WHERE email LIKE '" . $_POST['email'] . "';";
 		$db->query($query_rimozione_newsletter);
 		$db->close();

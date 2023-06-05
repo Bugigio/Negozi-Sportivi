@@ -30,7 +30,7 @@
                 <select name="magazzino">
                     <option value="">Seleziona il negozio/magazzino</option>
                     <?php 
-                        $db = new mysqli("localhost", "root", "", "accessport");
+                        $db = new mysqli("localhost", "root", "", "my_negozisportivi");
                         $query = "SELECT * FROM magazzino;";
                         $nomi = $db->query($query);
                         foreach($nomi as $r) {

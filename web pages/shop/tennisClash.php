@@ -30,7 +30,7 @@
 		<!-- TOMMASI -->
 		<div class="container">
 			<?php 
-				$db = new mysqli("localhost", "root", "", "accessport");
+				$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 				$query = "SELECT *\n"
 
 				. "FROM articolo\n"

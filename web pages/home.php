@@ -114,7 +114,7 @@
 		</form>
 		<?php // TOMMASI
 			if(isset($_POST['registrati'])) { // newsletter
-				$db = new mysqli("localhost", "root", "", "accessport");
+				$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 				$query_ricerca = "SELECT * FROM newsletter WHERE email LIKE '" . $_POST['email'] . "';";
 				$utente = $db->query($query_ricerca);
 				if($utente->num_rows === 0) {

@@ -79,7 +79,7 @@
 		</form>
 		<?php 
 			if(isset($_REQUEST['submit'])) {
-				$db = new mysqli("localhost", "root", "", "accessport");
+				$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 				switch ($_REQUEST['submit']) {
 					case 'Articoli':
 						?>

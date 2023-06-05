@@ -39,7 +39,7 @@
 			}
 
 			if(isset($_GET['acquista'])) {
-				$db = new mysqli("localhost", "root", "", "accessport");
+				$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 
 				$query_conteggio_articoli = "SELECT ar.ID_articolo, ar.nome_articolo , COUNT(*) AS quantita FROM acquistare as a\n"
 
@@ -96,7 +96,7 @@
 		<!-- TOMMASI -->
 		<div class="container">
 			<?php 
-				$db = new mysqli("localhost", "root", "", "accessport");
+				$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 				$query = "SELECT * FROM articolo
 				JOIN acquistare AS a ON a.id_articolo = articolo.ID_articolo WHERE a.email_utente LIKE '" . $_COOKIE["utente"] . "' AND a.carrello = 1;";
 				$articoli = $db->query($query);

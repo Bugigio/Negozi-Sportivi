@@ -1,6 +1,6 @@
 <?php 
 	if(isset($_POST['accedi'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 
 		$email = $_POST['email'];
 		$password = $_POST['password'];
@@ -44,7 +44,7 @@
 		die();
 		
 	} else if(isset($_POST['registrati'])) {
-		$db = new mysqli("localhost", "root", "", "accessport");
+		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 
 		
 		$nome = $_POST['nome'];
