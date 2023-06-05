@@ -134,18 +134,113 @@
 						break;
 					case 'Ordini':
 						# code...
+						?>
+						<table border="1">
+							<tr><td>Ordini</td></tr>
+							<tr><td>nome_articolo</td><td>quantità</td><td>costo</td><td>data_ordine</td><td>tipo_articolo</td><td>cod_ordine</td><td>negozio_ordinante</td><td>nome_fornitore</td></tr>
+							<?php 
+							$query_ordini = "SELECT * FROM ordini;";
+							$ordini = $db->query($query_ordini);
+							foreach($ordini as $o) {
+								?>
+								<form action="#" method="post">
+								<?php
+								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								?>
+								</form>
+								<?php
+							}
+							?>
+						</table>
+						<?php
 						break;
 					case 'Fornitori':
 						# code...
+						?>
+						<table border="1">
+							<tr><td>Fornitori</td></tr>
+							<tr><td>nome</td></tr>
+							<?php 
+							$query_fornitori = "SELECT * FROM fornitori;";
+							$fornitori = $db->query($query_fornitori);
+							foreach($fornitori as $f) {
+								?>
+								<form action="#" method="post">
+								<?php
+								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								?>
+								</form>
+								<?php
+							}
+							?>
+						</table>
+						<?php
 						break;
 					case 'Offerte':
 						# code...
+						?>
+						<table border="1">
+							<tr><td>Offerte</td></tr>
+							<tr><td>ID_offerta</td><td>percentuale_sconto</td><td>data_inizio</td><td>data_fine</td></tr>
+							<?php 
+							$query_offerte = "SELECT * FROM offerte;";
+							$offerte = $db->query($query_offerte);
+							foreach($offerte as $o) {
+								?>
+								<form action="#" method="post">
+								<?php
+								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								?>
+								</form>
+								<?php
+							}
+							?>
+						</table>
+						<?php
 						break;
 					case 'Bilancio':
 						# code...
+						?>
+						<table border="1">
+							<tr><td>Bilancio</td></tr>
+							<tr><td>costi</td><td>ricavi</td><td>profitti</td><td>rincaro_20</td><td>cod_bilancio</td><td>reddito</td><td>nome_magazzino</td></tr>
+							<?php 
+							$query_bilancio = "SELECT * FROM bilancio;";
+							$bilancio = $db->query($query_bilancio);
+							foreach($bilancio as $b) {
+								?>
+								<form action="#" method="post">
+								<?php
+								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								?>
+								</form>
+								<?php
+							}
+							?>
+						</table>
+						<?php
 						break;
 					case 'Newsletter':
 						# code...
+						?>
+						<table border="1">
+							<tr><td>Newsletter</td></tr>
+							<tr><td>email</td><td>nome</td><td>cognome</td><td>citta</td><td>via</td><td>numero_civico</td><td>provincia</td></tr>
+							<?php 
+							$query_newsletter = "SELECT * FROM newsletter;";
+							$newsletter = $db->query($query_newsletter);
+							foreach($newsletter as $n) {
+								?>
+								<form action="#" method="post">
+								<?php
+								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								?>
+								</form>
+								<?php
+							}
+							?>
+						</table>
+						<?php
 						break;
 				}
 				$db->close();
