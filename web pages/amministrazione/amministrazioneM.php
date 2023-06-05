@@ -24,7 +24,7 @@
 			$_SESSION['magazzino'] = $_POST['magazzino'];
 		}
 		if(!isset($_SESSION['magazzino'])) {
-			header("location: amministrazione.php");
+			header("location: amministrazione.php?err=1");
 			die();
 		}
 		if(isset($_REQUEST['err'])) {
@@ -35,6 +35,9 @@
 					break;
 				case '2':
 					echo "Un articolo non può avere un'offerta e un rincaro";
+					break;
+				case '3':
+					echo "Inserisci dei numeri in prezzo_acquisto/prezzo_vendita (es. 12.45; la virgola è segnata dal punto)";
 					break;
 				default:
 					echo 'Modifica eseguita con successo';
@@ -59,7 +62,7 @@
 		</header>
         <h1>AMMINISTRAZIONE MAGAZZINO</h1>
 		<form action="amministrazioneM.php" method="post">
-			<input type="hidden" name="magazzino" value="<?php if(isset($_SESSION['magazzino'])) echo $_SESSION['magazzino']; ?>">
+			<input type="hidden" name="nome_magazzino" value="<?php if(isset($_SESSION['magazzino'])) echo $_SESSION['magazzino']; ?>">
 			<input type="submit" name="submit" value="Articoli">
 			<input type="submit" name="submit" value="Utenti">
 			<input type="submit" name="submit" value="Ordini">
@@ -91,17 +94,18 @@
 							}
 							?>
 						</table>
-						<form action="amministrazione.php" method="post">
+						<form action="amministrazioneM.php" method="post">
 							<table>
 								<tr><td>Aggiungi un nuovo articolo</td></tr>
+								<input type="hidden" name="nome_magazzino" value="<?php if(isset($_SESSION['magazzino'])) echo $_SESSION['magazzino']; ?>">
 								<tr><td><input type="text" name="nome_articolo" placeholder="Nome articolo" required/></td></tr>
 								<tr><td><input type="text" name="tipo_articolo" placeholder="Tipo articolo" required/></td></tr>
 								<tr><td><input type="number" min=1 name="quantita" placeholder="Quantità" required/></td></tr>
 								<tr><td><input type="text" name="prezzo_acquisto" placeholder="Prezzo acquisto" required/></td></tr>
 								<tr><td><input type="text" name="prezzo_vendita" placeholder="Prezzo vendita" required/></td></tr>
-								<tr><td><input type="number" name="rincaro" min="0" max="100" placeholder="Rincaro (%)"/></td></tr>
+								<tr><td><input style="width: 100%;" type="number" name="rincaro" min="0" max="100" placeholder="Rincaro (0 default) (%)" required/></td></tr>
 								<tr><td><input type="number" name="cod_offerta" min="1" placeholder="Codice offerta" /></td></tr>
-								<tr><td><input type="submit" name="aggiungi" value="Aggiungi"></td></tr>
+								<tr><td><input type="submit" name="aggiungi_articolo" value="Aggiungi"></td></tr>
 							</table>
 						</form>
 
@@ -258,9 +262,33 @@
 				header("location: amministrazioneM.php?err");
 				die();
 			}
-			if(isset($_POST['aggiungi'])) {
+			if(isset($_POST['aggiungi_articolo'])) {
 				$db = new mysqli("localhost", "root", "", "accessport");
-				$query_inserimento = "INSERT INTO articolo"; // da continuare
+				
+				if(!is_numeric($_POST['prezzo_acquisto']) || !is_numeric($_POST['prezzo_vendita'])) {
+					header("location: amministrazioneM.php?err=3");
+					die();
+				}
+				if($_POST['cod_offerta']) {
+					$query_offerte = "SELECT * FROM offerte WHERE ID_offerta = " . $_POST['cod_offerta'] . ";";
+					$offerte = $db->query($query_offerte);
+					if($offerte->num_rows === 0) {
+						header("location: amministrazioneM.php?err=1");
+						die();
+					}
+					if($_POST['cod_offerta'] != 0 && $_POST['rincaro'] != 0) {
+						header("location: amministrazioneM.php?err=2");
+						die();
+					}
+					$query_inserimento = "INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `nome_magazzino`, `cod_offerta`) VALUES ('" . $_POST['quantita'] . "','" . $_POST['tipo_articolo'] . "','" . $_POST['nome_articolo'] . "','" . $_POST['prezzo_acquisto'] . "','" . $_POST['prezzo_vendita'] . "','". $_POST['rincaro'] . "','" . $_POST['nome_magazzino'] . "','" . $_POST['cod_offerta'] . "');";
+				} else {
+					$query_inserimento = "INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `nome_magazzino`) VALUES ('" . $_POST['quantita'] . "','" . $_POST['tipo_articolo'] . "','" . $_POST['nome_articolo'] . "','" . $_POST['prezzo_acquisto'] . "','" . $_POST['prezzo_vendita'] . "','". $_POST['rincaro'] . "','" . $_POST['nome_magazzino'] . "');";
+				}
+				
+				$db->query($query_inserimento);
+				$db->close();
+				header("location: amministrazioneM.php?err");
+				die();
 			}
 			if(isset($_POST['rimuovi_articolo'])) {
 				$id_articolo = $_POST['ID_articolo'];
@@ -269,6 +297,17 @@
 				$db->query($query_rimozione_acquisti);
 				$query = "DELETE FROM articolo WHERE ID_articolo = $id_articolo;";
 				$db->query($query);
+				header("location: amministrazioneM.php?err");
+				die();
+			}
+			if(isset($_POST['rimuovi_utente'])) {
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$email_utente = $_POST['email'];
+				$query_rimozione_acquisti = "DELETE FROM acquistare WHERE email_utente LIKE '$email';";
+				$query_rimozione = "DELETE FROM utenti WHERE email_utente LIKE '$email';";
+				$db->query($query_rimozione_acquisti);
+				$db->query($query_rimozione);
+				$db->close();
 				header("location: amministrazioneM.php?err");
 				die();
 			}
