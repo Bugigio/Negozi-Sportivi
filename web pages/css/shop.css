@@ -81,7 +81,7 @@ select[name="magazzino"] {
 }
 
 input[type="submit"] {
-	background-color: #b9b9b9;
+	background-color: #4caf50;
 	color: #ffffff;
 	padding: 10px 20px;
 	border: none;
@@ -91,7 +91,6 @@ input[type="submit"] {
 }
 
 .aggiungi-al-carrello {
-	background-color: #4caf50;
 	color: #000000;
 	padding: 10px 20px;
 	border: none;
