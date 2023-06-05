@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 05, 2023 alle 20:28
+-- Creato il: Giu 05, 2023 alle 23:13
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `accessport`
+-- Database: `my_negozisportivi`
 --
 
 -- --------------------------------------------------------
@@ -34,17 +34,6 @@ CREATE TABLE `acquistare` (
   `carrello` tinyint(1) DEFAULT NULL,
   `prezzo_pagato` double(4,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `acquistare`
---
-
-INSERT INTO `acquistare` (`id_articolo`, `email_utente`, `data/ora_acquisto`, `carrello`, `prezzo_pagato`) VALUES
-(2, 'v@v', '2023-05-29 17:31:56', 0, 9.07),
-(2, 'v@v', '2023-05-29 19:34:28', 0, 9.07),
-(2, 'v@v', '2023-05-30 15:57:00', 0, 9.07),
-(2, 'v@v', '2023-05-30 20:05:20', 0, 9.07),
-(2, 'v@v', '2023-05-30 22:41:16', 0, 9.07);
 
 -- --------------------------------------------------------
 
@@ -69,10 +58,27 @@ CREATE TABLE `articolo` (
 --
 
 INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `ID_articolo`, `nome_magazzino`, `cod_offerta`) VALUES
-(25, 'carciofo', 'caldata', 15.00, 45.15, 0, 2, 'Pallavolo Everywhere', 1),
-(3, 'ciccio', 'Luca', 12.45, 15.25, 0, 7, 'Pallavolo Everywhere', NULL),
-(3, 'Caldato', 'Carlo', 15.00, 17.00, 0, 8, 'Pallavolo Everywhere', NULL),
-(3, 'asdfasd', 'dfasfd', 3.00, 3.00, 0, 9, 'Pallavolo Everywhere', 1);
+(10, 'Tipo 1', 'Articolo 1', 10.50, 15.99, 5, 1, 'Pallavolo Everywhere', NULL),
+(15, 'Tipo 2', 'Articolo 2', 8.75, 12.99, 0, 2, 'Basketball Passion', NULL),
+(20, 'Tipo 3', 'Articolo 3', 15.99, 24.99, 10, 3, 'Racing Spirit', NULL),
+(15, 'Tipo 4', 'Articolo 4', 12.50, 19.99, 2, 4, 'Tennis Clash', NULL),
+(8, 'Tipo 5', 'Articolo 5', 9.99, 14.99, 0, 5, 'Racing Spirit', NULL),
+(10, 'Tipo 6', 'Articolo 6', 11.25, 17.99, 3, 6, 'Basketball Passion', NULL),
+(12, 'Tipo 7', 'Articolo 7', 18.75, 26.99, 0, 7, 'Pallavolo Everywhere', NULL),
+(25, 'Tipo 8', 'Articolo 8', 14.99, 21.99, 8, 8, 'Soccer Evolution', NULL),
+(18, 'Tipo 9', 'Articolo 9', 13.50, 18.99, 4, 9, 'Pallavolo Everywhere', NULL),
+(17, 'Tipo 10', 'Articolo 10', 11.99, 16.99, 0, 10, 'Racing Spirit', NULL),
+(16, 'Tipo 11', 'Articolo 11', 17.50, 25.99, 6, 11, 'Pallavolo Everywhere', NULL),
+(30, 'Tipo 12', 'Articolo 12', 10.99, 15.99, 0, 12, 'Tennis Clash', NULL),
+(99, 'Tipo 13', 'Articolo 13', 16.75, 23.99, 2, 13, 'Tennis Clash', NULL),
+(14, 'Tipo 14', 'Articolo 14', 12.99, 18.99, 0, 14, 'Basketball Passion', NULL),
+(61, 'Tipo 15', 'Articolo 15', 19.25, 29.99, 5, 15, 'Pallavolo Everywhere', NULL),
+(11, 'Tipo 16', 'Articolo 16', 14.50, 21.99, 0, 16, 'Soccer Evolution', NULL),
+(14, 'Tipo 17', 'Articolo 17', 13.99, 19.99, 3, 17, 'Soccer Evolution', NULL),
+(13, 'Tipo 18', 'Articolo 18', 11.75, 15.99, 0, 18, 'Tennis Clash', NULL),
+(18, 'Tipo 19', 'Articolo 19', 15.50, 22.99, 7, 19, 'Basketball Passion', NULL),
+(17, 'Tipo 20', 'Articolo 20', 14.99, 19.99, 0, 20, 'Soccer Evolution', NULL),
+(17, 'Tipo 14', 'Articolo 721', 43.00, 45.25, 0, 21, 'Pallavolo Everywhere', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,6 +172,13 @@ CREATE TABLE `newsletter` (
   `provincia` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `newsletter`
+--
+
+INSERT INTO `newsletter` (`email`, `nome`, `cognome`, `citta`, `via`, `numero_civico`, `provincia`) VALUES
+('carlo.caldato@antonioscarpa.edu.it', 'Carlo', 'Caldato', 'Levada', 'Culo grosso', 69, 'TV');
+
 -- --------------------------------------------------------
 
 --
@@ -184,8 +197,8 @@ CREATE TABLE `offerte` (
 --
 
 INSERT INTO `offerte` (`ID_offerta`, `percentuale_sconto`, `data_inizio`, `data_fine`) VALUES
-(1, 55, '2023-05-29', '2023-06-09'),
-(2, 42, '2023-05-30', '2023-05-31');
+(6, 65, '2023-06-23', '2023-06-30'),
+(7, 65, '2023-06-22', '2023-06-30');
 
 -- --------------------------------------------------------
 
@@ -307,7 +320,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT per la tabella `bilancio`
@@ -319,7 +332,7 @@ ALTER TABLE `bilancio`
 -- AUTO_INCREMENT per la tabella `offerte`
 --
 ALTER TABLE `offerte`
-  MODIFY `ID_offerta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_offerta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
