@@ -16,12 +16,22 @@
 		} else {
 			$query = "UPDATE articolo SET nome_articolo = '" .  $_POST['nome_articolo'] . "', tipo_articolo = '" . $_POST['tipo_articolo'] . "', quantita = '" . $_POST['quantita'] . "', prezzo_vendita = '" . $_POST['prezzo_vendita'] . "', rincaro = '" . $_POST['rincaro'] . "' WHERE ID_articolo = " . $_POST['ID_articolo'] . ";";
 		}
-		
+
 		$db->query($query);
+		$query_conteggio_quantita = "SELECT SUM(quantita) AS conteggio FROM articolo WHERE nome_magazzino LIKE '" . $_POST['nome_magazzino'] . "';";
+		$dati = $db->query($query_conteggio_quantita);
+		foreach($dati as $d) {
+			if($d["conteggio"] > 500) {
+				header("location: amministrazioneM.php?err=7");
+				die();
+			}
+		}
 		$db->close();
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
+
 	if(isset($_POST['aggiungi_articolo'])) {
 		$db = new mysqli("localhost", "root", "", "accessport");
 		
@@ -45,11 +55,22 @@
 			$query_inserimento = "INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `nome_magazzino`) VALUES ('" . $_POST['quantita'] . "','" . $_POST['tipo_articolo'] . "','" . $_POST['nome_articolo'] . "','" . $_POST['prezzo_acquisto'] . "','" . $_POST['prezzo_vendita'] . "','". $_POST['rincaro'] . "','" . $_POST['nome_magazzino'] . "');";
 		}
 		
+		$query_conteggio_quantita = "SELECT SUM(quantita) AS conteggio FROM articolo WHERE nome_magazzino LIKE '" . $_POST['nome_magazzino'] . "';";
+		$dati = $db->query($query_conteggio_quantita);
+		foreach($dati as $d) {
+			if($d["conteggio"] + $_POST['quantita'] > 500) {
+				header("location: amministrazioneM.php?err=6");
+				die();
+			}
+		}
+
 		$db->query($query_inserimento);
 		$db->close();
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
+
 	if(isset($_POST['rimuovi_articolo'])) {
 		$id_articolo = $_POST['ID_articolo'];
 		$db = new mysqli("localhost", "root", "", "accessport");
@@ -60,6 +81,8 @@
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
+
 	if(isset($_POST['rimuovi_utente'])) {
 		$db = new mysqli("localhost", "root", "", "accessport");
 		$email_utente = $_POST['email'];
@@ -71,6 +94,8 @@
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
+
 	if(isset($_POST['aggiungi_fornitore'])) {
 		$db = new mysqli("localhost", "root", "", "accessport");
 		$query_inserimento = "INSERT INTO fornitori(`nome`) VALUES('" . $_POST['nome_fornitore'] . "');";
@@ -79,6 +104,7 @@
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
 
 	if(isset($_POST['aggiungi_offerta'])) {
 		$db = new mysqli("localhost", "root", "", "accessport");
@@ -98,12 +124,24 @@
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
+	
 	if(isset($_POST['rimuovi_offerta'])) {
 		$db = new mysqli("localhost", "root", "", "accessport");
 		$query_rimozione_sconti_articoli = "UPDATE articolo SET cod_offerta = NULL WHERE cod_offerta = " . $_POST['ID_offerta'] . ";";
 		$db->query($query_rimozione_sconti_articoli);
 		$query_rimozione_offerta = "DELETE FROM offerte WHERE ID_offerta = " . $_POST['ID_offerta'] . ";";
 		$db->query($query_rimozione_offerta);
+		$db->close();
+		header("location: amministrazioneM.php?err");
+		die();
+	}
+
+
+	if(isset($_POST['rimuovi_newsletter'])) {
+		$db = new mysqli("localhost", "root", "", "accessport");
+		$query_rimozione_newsletter = "DELETE FROM newsletter WHERE email LIKE '" . $_POST['email'] . "';";
+		$db->query($query_rimozione_newsletter);
 		$db->close();
 		header("location: amministrazioneM.php?err");
 		die();

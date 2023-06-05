@@ -39,6 +39,12 @@
 				case '3':
 					echo "Inserisci dei numeri in prezzo_acquisto/prezzo_vendita (es. 12.45; la virgola è segnata dal punto)";
 					break;
+				case 6:
+					echo "La capacità del magazzino (500) non può essere superata";
+					break;
+				case 7:
+					echo "La capacità del magazzino (500) non può essere superata, rimuovere subito le quantità in eccesso";
+					break;
 				default:
 					echo 'Modifica eseguita con successo';
 					break;
@@ -86,6 +92,7 @@
 							foreach($articoli as $a) {
 								?>
 								<form action="functions.php" method="post">
+								<input type="hidden" name="nome_magazzino" value="<?php if(isset($_SESSION['magazzino'])) echo $_SESSION['magazzino']; ?>">
 								<?php
 								if($a["quantita"] < 10) {
 									echo "<script>window.alert('Quantità articolo (ID: " . $a["ID_articolo"] . ") scarsa, rifornirlo');</script>";
@@ -137,23 +144,24 @@
 					case 'Ordini':
 
 						?>
-						<table border="1">
+						Funzione non totalmente sviluppata
+						<!-- <table border="1">
 							<tr><td>Ordini</td></tr>
 							<tr><td>nome_articolo</td><td>quantità</td><td>costo</td><td>data_ordine</td><td>tipo_articolo</td><td>cod_ordine</td><td>negozio_ordinante</td><td>nome_fornitore</td></tr>
 							<?php 
-							$query_ordini = "SELECT * FROM ordini;";
-							$ordini = $db->query($query_ordini);
-							foreach($ordini as $o) {
+							// $query_ordini = "SELECT * FROM ordini;";
+							// $ordini = $db->query($query_ordini);
+							// foreach($ordini as $o) {
 								?>
 								<form action="functions.php" method="post">
 								<?php
-								echo '<tr><td><input type="text" name="nome_articolo" value="' . $u["nome_articolo"] . '" readonly /></td><td><input type="number" name="quantita" value="' . $u["quantita"] . '" readonly /></td><td><input type="number" name="costo" value="'. $u["costo"] . '" readonly /></td><td><input type="date" name="data_ordine" value="'. $u["data_ordine"] . '" readonly /></td><td><input type="text" name="tipo_articolo" value="'. $u["tipo_articolo"] . '" readonly /></td><td><input type="number" name="cod_ordine" value="'. $u["cod_ordine"] . '" readonly /></td><td><input type="text" name="negozio_ordinante" value="'. $u["negozio_ordinante"]  . '" readonly /></td><td><input type="text" name="nome_fornitore" value="'. $u["nome_fornitore"]   .'" readonly /></td><td><input type=submit name=rimuovi_ordini value=Rimuovi /></td></tr>';
+								// echo '<tr><td><input type="text" name="nome_articolo" value="' . $u["nome_articolo"] . '" readonly /></td><td><input type="number" name="quantita" value="' . $u["quantita"] . '" readonly /></td><td><input type="number" name="costo" value="'. $u["costo"] . '" readonly /></td><td><input type="date" name="data_ordine" value="'. $u["data_ordine"] . '" readonly /></td><td><input type="text" name="tipo_articolo" value="'. $u["tipo_articolo"] . '" readonly /></td><td><input type="number" name="cod_ordine" value="'. $u["cod_ordine"] . '" readonly /></td><td><input type="text" name="negozio_ordinante" value="'. $u["negozio_ordinante"]  . '" readonly /></td><td><input type="text" name="nome_fornitore" value="'. $u["nome_fornitore"]   .'" readonly /></td><td><input type=submit name=rimuovi_ordini value=Rimuovi /></td></tr>';
 								?>
 								</form>
 								<?php
-							}
+							//}
 							?>
-						</table>
+						</table> -->
 						<!-- <form action="functions.php" method="post"> // implementazione futura
 							<table>
 								<tr><td>Aggiungi un nuovo ordine</td></tr>
@@ -288,7 +296,7 @@
 								?>
 								<form action="functions.php" method="post">
 								<?php
-								echo '<tr><td><input type="email" name="email" value="' . $n["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $n["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $n["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $n["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $n["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $n["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								echo '<tr><td><input type="email" name="email" value="' . $n["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $n["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $n["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $n["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $n["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $n["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $n["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_newsletter value=Rimuovi /></td></tr>';
 								?>
 								</form>
 								<?php
