@@ -67,7 +67,7 @@
 							}
 						?></p>
 						<input type="hidden" value="<?php echo $a["ID_articolo"]; ?>" />
-						<input type="button" onclick="<?php echo "aggiungiAlCarrello('" . $a["ID_articolo"] .  "', '" . $_COOKIE["utente"] . "')"; ?>" value="Aggiungi al carrello" />
+						<input type="button" class="aggiungi-al-carrello" onclick="<?php echo "aggiungiAlCarrello('" . $a["ID_articolo"] .  "', '" . $_COOKIE["utente"] . "')"; ?>" value="Aggiungi al carrello" />
 					</div>
 					<?php
 				}

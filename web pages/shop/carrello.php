@@ -133,13 +133,13 @@
 							<input type="hidden" name="prezzo_pagato" value="<?php echo $prezzo; ?>">
 							<input type="hidden" name="data/ora_acquisto" value="<?php echo $a["data/ora_acquisto"]?>">
 							<input type="hidden" name="id_articolo" value="<?php echo $a["ID_articolo"]; ?>"/>
-							<input type="submit" name="rimuovi" value="Rimuovi articolo"/>
+							<input type="submit" class="rimuovi-dal-carrello" name="rimuovi" value="Rimuovi articolo"/>
 						</form>
 					</div>
 					<?php
 				}
 			?>
-			<a href="<?php echo $_SERVER['PHP_SELF']; ?>?acquista=1"><input type="button" name="acquista" value="Acquista"/></a>
+			<a href="<?php echo $_SERVER['PHP_SELF']; ?>?acquista=1"><input type="button" class="acquista-articoli" name="acquista" value="Acquista"/></a>
 		</div>
 
 		<!-- CIGANA -->

@@ -70,6 +70,49 @@ header div {
 	flex-wrap: wrap;
 }
 
+.aggiungi-al-carrello {
+	background-color: #4caf50;
+	color: #000000;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 100%;
+  }
+  
+.aggiungi-al-carrello:hover {
+background-color: #3e8e41;
+}
+
+.rimuovi-dal-carrello {
+background-color: #4caf50;
+color: #000000;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+width: 100%;
+}
+
+.rimuovi-dal-carrello:hover {
+background-color: #3e8e41;
+}
+
+.acquista-articoli {
+background-color: #a3a3a3;
+color: #000000;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+width: auto;
+position: absolute;
+right: 20px;
+}
+
+.acquista-articoli:hover {
+background-color: #fbff00;
+}
 
 .articolo {
 	max-width: 20%;
