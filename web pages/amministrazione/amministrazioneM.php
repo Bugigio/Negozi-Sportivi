@@ -141,7 +141,7 @@
 								?>
 								<form action="#" method="post">
 								<?php
-								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								echo '<tr><td><input type="text" name="nome_articolo" value="' . $u["nome_articolo"] . '" readonly /></td><td><input type="number" name="quantita" value="' . $u["quantita"] . '" readonly /></td><td><input type="number" name="costo" value="'. $u["costo"] . '" readonly /></td><td><input type="date" name="data_ordine" value="'. $u["data_ordine"] . '" readonly /></td><td><input type="text" name="tipo_articolo" value="'. $u["tipo_articolo"] . '" readonly /></td><td><input type="number" name="cod_ordine" value="'. $u["cod_ordine"] . '" readonly /></td><td><input type="text" name="negozio_ordinante" value="'. $u["negozio_ordinante"]  . '" readonly /></td><td><input type="text" name="nome_fornitore" value="'. $u["nome_fornitore"]   .'" readonly /></td><td><input type=submit name=rimuovi_ordini value=Rimuovi /></td></tr>';
 								?>
 								</form>
 								<?php
