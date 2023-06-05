@@ -7,6 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>SOCCER EVOLUTION</title>
 		<link rel="stylesheet" href="../css/shop.css">
+		<script src="../JS/jquery.js"></script>
+		<script src="../JS/prezzo_totale.js"></script>
 	</head>
 	<body>
 		<header class="header clearfix">
