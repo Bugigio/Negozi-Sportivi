@@ -79,4 +79,34 @@
 		header("location: amministrazioneM.php?err");
 		die();
 	}
+
+	if(isset($_POST['aggiungi_offerta'])) {
+		$db = new mysqli("localhost", "root", "", "accessport");
+		$data_iniziale = $_POST['data_iniziale']; // La data originale nel formato "gg/mm/aaaa"
+		$data_finale = $_POST['data_finale'];
+
+		// Converto la data nel formato "aaaa-mm-gg"
+		$data_iniziale_convertita = date('Y-m-d', strtotime($data_iniziale));
+		$data_finale_convertita = date("Y-m-d", strtotime($data_finale));
+
+		echo $data_iniziale_convertita;
+		echo $data_finale_convertita;
+
+		$query_inserimento = "INSERT INTO offerte(`percentuale_sconto`, `data_inizio`, `data_fine`) VALUES('" . $_POST['percentuale_sconto'] . "', '" . $data_iniziale_convertita . "', '" . $data_finale_convertita . "');";
+		$db->query($query_inserimento);
+		$db->close();
+		header("location: amministrazioneM.php?err");
+		die();
+	}
+	if(isset($_POST['rimuovi_offerta'])) {
+		$db = new mysqli("localhost", "root", "", "accessport");
+		$query_rimozione_sconti_articoli = "UPDATE articolo SET cod_offerta = NULL WHERE cod_offerta = " . $_POST['ID_offerta'] . ";";
+		$db->query($query_rimozione_sconti_articoli);
+		$query_rimozione_offerta = "DELETE FROM offerte WHERE ID_offerta = " . $_POST['ID_offerta'] . ";";
+		$db->query($query_rimozione_offerta);
+		$db->close();
+		header("location: amministrazioneM.php?err");
+		die();
+	}
+
 ?>

@@ -111,7 +111,6 @@
 								<tr><td><input type="submit" name="aggiungi_articolo" value="Aggiungi"></td></tr>
 							</table>
 						</form>
-
 						<?php
 						break;
 					case 'Utenti':
@@ -246,35 +245,35 @@
 						</table>
 						<form action="functions.php" method="post">
 							<table>
-								<tr><td>Aggiungi un nuovo articolo</td></tr>
+								<tr><td>Aggiungi una nuova offerta</td></tr>
 								<tr><td><input type="number" name="percentuale_sconto" placeholder="Percentuale sconto" required/></td></tr>
-								<tr><td><input type="date" name="data_inizio" placeholder="Data inizio" required/></td></tr>
-								<tr><td><input type="date" name="data_fine" placeholder="Data fine" required/></td></tr>
-								<tr><td><input type="submit" name="aggiungi_articolo" value="Aggiungi"></td></tr>
+								<tr><td><input type="date" name="data_iniziale" placeholder="Data inizio" required/></td></tr>
+								<tr><td><input type="date" name="data_finale" placeholder="Data fine" required/></td></tr>
+								<tr><td><input type="submit" name="aggiungi_offerta" value="Aggiungi"></td></tr>
 							</table>
 						</form>
 						<?php
 						break;
-					case 'Bilancio':
+					case 'Bilancio': // implementazione futura
 
-						?>
-						<table border="1">
+						?> 
+						<!-- <table border="1">
 							<tr><td>Bilancio</td></tr>
 							<tr><td>costi</td><td>ricavi</td><td>profitti</td><td>rincaro_20</td><td>cod_bilancio</td><td>reddito</td><td>nome_magazzino</td></tr>
 							<?php 
-							$query_bilancio = "SELECT * FROM bilancio;";
-							$bilancio = $db->query($query_bilancio);
-							foreach($bilancio as $b) {
+							//$query_bilancio = "SELECT * FROM bilancio;";
+							//$bilancio = $db->query($query_bilancio);
+							//foreach($bilancio as $b) {
 								?>
 								<form action="functions.php" method="post">
 								<?php
-								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								// echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
 								?>
 								</form>
 								<?php
-							}
+							//}
 							?>
-						</table>
+						</table> -->
 						<?php
 						break;
 					case 'Newsletter':
@@ -289,7 +288,7 @@
 								?>
 								<form action="functions.php" method="post">
 								<?php
-								echo '<tr><td><input type="email" name="email" value="' . $u["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $u["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $u["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $u["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $u["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $u["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
+								echo '<tr><td><input type="email" name="email" value="' . $n["email"] . '" readonly /></td><td><input type="text" name="nome" value="' . $n["nome"] . '" readonly /></td><td><input type="text" name="cognome" value="' . $n["cognome"] . '" readonly /></td><td><input type="text" name="citta" value="' . $n["citta"] . '" readonly /></td><td><input type="text" name="via" value="' . $n["via"] . '" readonly /></td><td><input type="number" name="numero_civico" value="' . $u["numero_civico"] . '" readonly /></td><td><input type="text" name="provincia" value="' . $n["provincia"] .'" readonly /></td><td><input type=submit name=rimuovi_utente value=Rimuovi /></td></tr>';
 								?>
 								</form>
 								<?php
