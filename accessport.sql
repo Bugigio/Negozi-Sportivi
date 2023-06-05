@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 30, 2023 alle 22:59
+-- Creato il: Giu 05, 2023 alle 16:30
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -44,14 +44,7 @@ INSERT INTO `acquistare` (`id_articolo`, `email_utente`, `data/ora_acquisto`, `c
 (2, 'v@v', '2023-05-29 19:34:28', 0, 9.07),
 (2, 'v@v', '2023-05-30 15:57:00', 0, 9.07),
 (2, 'v@v', '2023-05-30 20:05:20', 0, 9.07),
-(2, 'v@v', '2023-05-30 22:41:16', 0, 9.07),
-(3, 'v@v', '2023-05-29 19:35:58', 0, 46.40),
-(3, 'v@v', '2023-05-30 20:03:21', 0, 46.40),
-(3, 'v@v', '2023-05-30 20:05:22', 0, 46.40),
-(3, 'v@v', '2023-05-30 20:06:23', 0, 46.40),
-(3, 'v@v', '2023-05-30 22:41:23', 0, 46.40),
-(4, 'v@v', '2023-05-29 19:35:59', 0, 99.00),
-(6, 'v@v', '2023-05-30 20:03:17', 0, 45.00);
+(2, 'v@v', '2023-05-30 22:41:16', 0, 9.07);
 
 -- --------------------------------------------------------
 
@@ -65,7 +58,7 @@ CREATE TABLE `articolo` (
   `nome_articolo` varchar(45) NOT NULL,
   `prezzo_acquisto` double(4,2) NOT NULL,
   `prezzo_vendita` double(4,2) NOT NULL,
-  `rincaro` int(2) DEFAULT NULL,
+  `rincaro` int(2) DEFAULT 0,
   `ID_articolo` int(11) NOT NULL,
   `nome_magazzino` varchar(30) NOT NULL,
   `cod_offerta` int(11) DEFAULT NULL
@@ -76,11 +69,7 @@ CREATE TABLE `articolo` (
 --
 
 INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `ID_articolo`, `nome_magazzino`, `cod_offerta`) VALUES
-(30, 'pallone', 'carlo', 15.00, 20.15, NULL, 2, 'Pallavolo Everywhere', 1),
-(8, 'maglia', 'Maglia Calcio', 50.00, 80.00, NULL, 3, 'Pallavolo Everywhere', 2),
-(5, 'racchetta', 'Racchetta Tennis', 99.99, 99.99, NULL, 4, 'Pallavolo Everywhere', NULL),
-(15, 'pallone', 'Pallone Basket', 25.00, 35.00, NULL, 5, 'Pallavolo Everywhere', NULL),
-(8, 'scarpe', 'Scarpe Running', 99.99, 99.99, NULL, 6, 'Pallavolo Everywhere', 1);
+(25, 'carciofo', 'caldata', 15.00, 45.15, 0, 2, 'Pallavolo Everywhere', 1);
 
 -- --------------------------------------------------------
 
@@ -187,7 +176,7 @@ CREATE TABLE `offerte` (
 --
 
 INSERT INTO `offerte` (`ID_offerta`, `percentuale_sconto`, `data_inizio`, `data_fine`) VALUES
-(1, 55, '2023-05-29', '2023-05-30'),
+(1, 55, '2023-05-29', '2023-06-09'),
 (2, 42, '2023-05-30', '2023-05-31');
 
 -- --------------------------------------------------------
