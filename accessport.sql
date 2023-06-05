@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 05, 2023 alle 16:30
+-- Creato il: Giu 05, 2023 alle 20:28
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -69,7 +69,10 @@ CREATE TABLE `articolo` (
 --
 
 INSERT INTO `articolo` (`quantita`, `tipo_articolo`, `nome_articolo`, `prezzo_acquisto`, `prezzo_vendita`, `rincaro`, `ID_articolo`, `nome_magazzino`, `cod_offerta`) VALUES
-(25, 'carciofo', 'caldata', 15.00, 45.15, 0, 2, 'Pallavolo Everywhere', 1);
+(25, 'carciofo', 'caldata', 15.00, 45.15, 0, 2, 'Pallavolo Everywhere', 1),
+(3, 'ciccio', 'Luca', 12.45, 15.25, 0, 7, 'Pallavolo Everywhere', NULL),
+(3, 'Caldato', 'Carlo', 15.00, 17.00, 0, 8, 'Pallavolo Everywhere', NULL),
+(3, 'asdfasd', 'dfasfd', 3.00, 3.00, 0, 9, 'Pallavolo Everywhere', 1);
 
 -- --------------------------------------------------------
 
@@ -122,6 +125,7 @@ CREATE TABLE `fornitori` (
 --
 
 INSERT INTO `fornitori` (`nome`) VALUES
+('Carlo'),
 ('ciccio');
 
 -- --------------------------------------------------------
@@ -140,7 +144,11 @@ CREATE TABLE `magazzino` (
 --
 
 INSERT INTO `magazzino` (`nome`, `capacita`) VALUES
-('Pallavolo Everywhere', 500);
+('Basketball Passion', 500),
+('Pallavolo Everywhere', 500),
+('Racing Spirit', 500),
+('Soccer Evolution', 500),
+('Tennis Clash', 500);
 
 -- --------------------------------------------------------
 
@@ -299,7 +307,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `bilancio`
