@@ -29,6 +29,18 @@
 						break;
 				}
 			}
+			if(isset($_GET['err'])) {
+				echo "<script>window.alert('";
+				switch($_GET['err']) {
+					case 5:
+						echo "Ricontrolla i dati";
+						break;
+					default:
+						echo "Errore generico";
+						break;
+				}
+				echo "')</script>";
+			}
 		?> 
 	</head>
 	
@@ -88,16 +100,41 @@
 			<div class="banner__image"></div>
 		</section>
 		-->
-
+		<!-- TANASE -->
 		<form action="home.php" method="post">
 			<h1>Registrati alla nostra newsletter!</h1>
-			<input type=email name=email placeholder="Email" required/>
-			<input type=text name=provincia placeholder="Provincia" required/>
-			<input type=text name=città placeholder="Città" required/>
-			<input type=text name=via placeholder="Via" required/>
+			<input type=email name=email maxlength="100" placeholder="Email" required/>
+			<input type="text" name="nome" maxlength="30" placeholder="Nome" required/>
+			<input type="text" name="cognome" maxlength="15" placeholder="Cognome" required/>
+			<input type=text name=provincia maxlength="2" placeholder="Provincia" required/>
+			<input type=text name=citta max="100" placeholder="Città" required/>
+			<input type=text name=via maxlength="50" placeholder="Via" required/>
 			<input type=number name=civico placeholder="Civico" min=1 max=999 required/>
 			<input type=submit name=registrati value=Iscriviti />
 		</form>
+		<?php // TOMMASI
+			if(isset($_POST['registrati'])) { // newsletter
+				$db = new mysqli("localhost", "root", "", "accessport");
+				$query_ricerca = "SELECT * FROM newsletter WHERE email LIKE '" . $_POST['email'] . "';";
+				$utente = $db->query($query_ricerca);
+				if($utente->num_rows === 0) {
+					$email = $_POST['email'];
+					$nome = $_POST['nome'];
+					$cognome = $_POST['cognome'];
+					$provincia = $_POST['provincia'];
+					$citta = $_POST['citta'];
+					$via = $_POST['via'];
+					$numero_civico = $_POST['civico'];
+					if(is_numeric($nome) || is_numeric($cognome) || is_numeric($provincia) || is_numeric($citta) || is_numeric($via) || is_numeric($email)) {
+						header("location: home.php?err=5");
+						die();
+					}
+					$query_inserimento = "INSERT INTO newsletter(`email`,`nome`,`cognome`,`provincia`,`citta`,`via`,`numero_civico`) VALUES ('$email','$nome','$cognome','$provincia','$citta','$via','$numero_civico');";
+					$db->query($query_inserimento);
+					$db->close();
+				}
+			}
+		?>
 
 		<!-- FOOTER -->
         <footer class="footer">

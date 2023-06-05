@@ -13,6 +13,9 @@
                     case 1:
                         echo 'Errore, utente già esistente';
                         break;
+                    case 5:
+                        echo 'Ricontrolla i dati, non inserire numeri dove non bisogna!';
+                        break;
                     default:
                         echo 'Errore generico';
                         break;

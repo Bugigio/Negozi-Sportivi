@@ -63,6 +63,10 @@
 				die();
 			}
 		}
+		if(is_numeric($nome) || is_numeric($cognome) || is_numeric($provincia) || is_numeric($citta) || is_numeric($via) || is_numeric($email)) {
+			header("location: registrati.php?err=5");
+			die();
+		}
 
 		$query = "INSERT INTO utenti(nome, cognome, `password`, email, citta, via, numero_civico, provincia) values 
 				('$nome', '$cognome', '$password','$email', '$citta', '$via', '$civico', '$provincia');";
