@@ -265,6 +265,7 @@
 					case 'Bilancio': // implementazione futura
 
 						?> 
+						Funzione non totalmente sviluppata
 						<!-- <table border="1">
 							<tr><td>Bilancio</td></tr>
 							<tr><td>costi</td><td>ricavi</td><td>profitti</td><td>rincaro_20</td><td>cod_bilancio</td><td>reddito</td><td>nome_magazzino</td></tr>
