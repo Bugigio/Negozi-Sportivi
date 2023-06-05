@@ -101,7 +101,7 @@
 		</section>
 		-->
 		<!-- TANASE -->
-		<form action="home.php" method="post">
+		<form action="index.php" method="post">
 			<h1>Registrati alla nostra newsletter!</h1>
 			<input type=email name=email maxlength="100" placeholder="Email" required/>
 			<input type="text" name="nome" maxlength="30" placeholder="Nome" required/>
@@ -126,7 +126,7 @@
 					$via = $_POST['via'];
 					$numero_civico = $_POST['civico'];
 					if(is_numeric($nome) || is_numeric($cognome) || is_numeric($provincia) || is_numeric($citta) || is_numeric($via) || is_numeric($email)) {
-						header("location: home.php?err=5");
+						header("location: index.php?err=5");
 						die();
 					}
 					$query_inserimento = "INSERT INTO newsletter(`email`,`nome`,`cognome`,`provincia`,`citta`,`via`,`numero_civico`) VALUES ('$email','$nome','$cognome','$provincia','$citta','$via','$numero_civico');";

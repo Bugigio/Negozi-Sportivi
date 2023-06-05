@@ -26,13 +26,13 @@
 				<span></span>
 			</a>
 			<div class="header__menu animate">
-				<div class="header__menu__item"><a href="home.php">HOME</a></div>
+				<div class="header__menu__item"><a href="index.php">HOME</a></div>
 				<div class="header__menu__item"><a href="shop/basketballPassion.php">BASKETBALL PASSION</a></div>
 				<div class="header__menu__item"><a href="shop/pallavoloEverywhere.php">PALLAVOLO EVERYWHERE</a></div>
 				<div class="header__menu__item"><a href="shop/racingSpirit.php">RACING SPIRIT</a></div>
 				<div class="header__menu__item"><a href="shop/soccerEvolution.php">SOCCER EVOLUTION</a></div>
 				<div class="header__menu__item"><a href="shop/tennisClash.php">TENNIS CLASH</a></div>
-				<div class="header__menu__item"><a href="home.php?logout=1">LOGOUT</a></div>
+				<div class="header__menu__item"><a href="index.php?logout=1">LOGOUT</a></div>
 				<div class="header__menu__item"><a href="shop/carrello.php"><img src="immagini/carrello.png" alt="Carrello" width="20px" /></a></div>
 			</div>
 		</header>

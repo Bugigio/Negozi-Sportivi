@@ -19,7 +19,7 @@
         <header class="header clearfix">
             <a href="" class="header__logo"><img src="../immagini/logoNegoziSportivi.png" alt="Logo" width="50px" /></a>
             <div class="header__menu animate">
-                <div class="header__menu__item"><a href="../home.php?logout=0">LOGOUT</a></div>
+                <div class="header__menu__item"><a href="../index.php?logout=0">LOGOUT</a></div>
 			</div>
 		</header>
 
@@ -40,7 +40,7 @@
                 </select>
             <input type="submit" name="accedi" value="Accedi">
         </form>
-        <div class=logout><a href=home.php></a></div>
+        <div class=logout><a href=index.php></a></div>
 
         <!-- CIGANA -->		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

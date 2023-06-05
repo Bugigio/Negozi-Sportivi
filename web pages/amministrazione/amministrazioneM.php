@@ -63,7 +63,7 @@
 				<span></span>
 			</a>
 			<div class="header__menu animate">
-                <div class="header__menu__item"><a href="../home.php?logout=0">LOGOUT</a></div>
+                <div class="header__menu__item"><a href="../index.php?logout=0">LOGOUT</a></div>
 			</div>
 		</header>
         <h1>AMMINISTRAZIONE MAGAZZINO</h1>
