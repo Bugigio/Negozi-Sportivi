@@ -87,7 +87,7 @@
 		$db = new mysqli("localhost", "root", "", "my_negozisportivi");
 		$email_utente = $_POST['email'];
 		$query_rimozione_acquisti = "DELETE FROM acquistare WHERE email_utente LIKE '$email';";
-		$query_rimozione = "DELETE FROM utenti WHERE email_utente LIKE '$email';";
+		$query_rimozione = "DELETE FROM utenti WHERE email LIKE '$email';";
 		$db->query($query_rimozione_acquisti);
 		$db->query($query_rimozione);
 		$db->close();
